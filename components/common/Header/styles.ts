@@ -1,20 +1,20 @@
 import styled from "@emotion/styled";
-import { color } from "../../../styles/color";
+import theme from "../../../styles/theme";
 
 export const HeaderContainer = styled.div`
   width: 120px;
   min-height: 100vh;
-  background: ${color.black000};
   box-sizing: border-box;
   padding: 60px 0;
   display: flex;
   flex-direction: column;
   gap: 70px;
+  background-color: ${theme.colors.black000};
 `;
 
 export const HeaderTitle = styled.div`
   font-size: 36px;
-  color: ${color.white000};
+  color: ${theme.colors.white000};
   transform: rotate(180deg);
   writing-mode: vertical-lr;
   margin: 0 auto;
@@ -23,9 +23,9 @@ export const HeaderTitle = styled.div`
 
 export const HeaderNavigation = styled.div`
   font-size: 24px;
-  color: ${color.white000};
   transform: rotate(180deg);
   writing-mode: vertical-lr;
+  color: ${theme.colors.white000};
 `;
 
 export const HeaderBox = styled.div`
