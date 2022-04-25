@@ -1,10 +1,13 @@
 import { FC } from "react";
-import Header from "../Header";
 import * as S from "./styles";
+import dynamic from "next/dynamic";
+
+const HeaderWithNoSSR = dynamic(() => import("../Header"), { ssr: false });
+
 const Layout: FC = ({ children }): JSX.Element => {
   return (
     <S.LayoutContainer>
-      <Header />
+      <HeaderWithNoSSR />
       {children}
     </S.LayoutContainer>
   );
