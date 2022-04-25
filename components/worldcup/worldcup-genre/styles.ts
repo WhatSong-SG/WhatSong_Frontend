@@ -2,10 +2,12 @@ import styled from "@emotion/styled";
 
 export const WorldCupMainContainer = styled.main`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #f2f2f2;
+  min-height: 680px;
 `;
 
 export const GenreArticle = styled.article`
@@ -25,7 +27,7 @@ export const HeaderTitleWrapper = styled.section`
 
   & > h1 {
     margin: 27px;
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: bold;
   }
 `;
