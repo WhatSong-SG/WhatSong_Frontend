@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import WorldCupGenre from "../components/worldcup/worldcup-genre";
 
-const worldCup: NextPage = () => {
+const tournament: NextPage = () => {
   return <WorldCupGenre />;
 };
 
-export default worldCup;
+export default tournament;
