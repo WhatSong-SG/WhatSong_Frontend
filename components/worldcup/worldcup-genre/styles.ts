@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const WorldCupMainContainer = styled.main`
   width: 100%;
+  min-width: px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +30,7 @@ export const HeaderTitleWrapper = styled.section`
     font-size: 2.5rem;
     font-weight: bold;
   }
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1409px) {
     justify-content: center;
     align-self: center;
   }
@@ -46,12 +47,6 @@ export const GenreListContainer = styled.section`
   }
 
   @media screen and (max-width: 1400px) {
-    gap: none;
-    justify-content: center;
-  }
-
-  @media screen and (max-width: 768px) {
-    gap: none;
     justify-content: center;
   }
 `;
