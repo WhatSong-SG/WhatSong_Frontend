@@ -32,4 +32,10 @@ export const HeaderTitleWrapper = styled.section`
   }
 `;
 
-export const GenreListContainer = styled.section``;
+export const GenreListContainer = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  gap: 48px 97px;
+  justify-content: space-between;
+`;
