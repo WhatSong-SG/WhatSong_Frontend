@@ -1,6 +1,7 @@
 import { FC } from "react";
 import * as S from "./styles";
 import Trophy from "../../../public/icon/Trophy";
+import GenreListItem from "./GenreListItem";
 
 const WorldCupGenre: FC = () => {
   return (
@@ -10,7 +11,16 @@ const WorldCupGenre: FC = () => {
           <h1>Choose Your Genre</h1>
           <Trophy />
         </S.HeaderTitleWrapper>
-        <S.GenreListContainer></S.GenreListContainer>
+        <S.GenreListContainer>
+          <GenreListItem genre={"KPOP"} />
+          <GenreListItem genre={"KPOP"} />
+          <GenreListItem genre={"KPOP"} />
+          <GenreListItem genre={"KPOP"} />
+          <GenreListItem genre={"KPOP"} />
+          <GenreListItem genre={"KPOP"} />
+          <GenreListItem genre={"KPOP"} />
+          <GenreListItem genre={"KPOP"} />
+        </S.GenreListContainer>
       </S.GenreArticle>
     </S.WorldCupMainContainer>
   );
