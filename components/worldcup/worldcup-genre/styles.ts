@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const WorldCupMainContainer = styled.main`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,12 +29,29 @@ export const HeaderTitleWrapper = styled.section`
     font-size: 2.5rem;
     font-weight: bold;
   }
+  @media screen and (max-width: 1400px) {
+    justify-content: center;
+    align-self: center;
+  }
 `;
 
 export const GenreListContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin-top: 100px;
-  gap: 48px 97px;
-  justify-content: space-between;
+  gap: 48px 127px;
+
+  @media screen and (max-width: 1894px) {
+    justify-content: space-around;
+  }
+
+  @media screen and (max-width: 1400px) {
+    gap: none;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    gap: none;
+    justify-content: center;
+  }
 `;
