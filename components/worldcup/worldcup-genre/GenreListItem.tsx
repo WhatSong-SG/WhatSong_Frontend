@@ -31,6 +31,7 @@ const GenreListItemWrapper = styled.div`
   flex-direction: column;
   width: 240px;
   align-items: center;
+  cursor: pointer;
   .GenreImageWrapper {
     width: 100%;
     height: 15.0275rem;
