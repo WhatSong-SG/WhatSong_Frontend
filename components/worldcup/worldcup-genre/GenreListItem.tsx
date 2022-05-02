@@ -5,16 +5,17 @@ import Image from "next/image";
 
 interface Props {
   genre: string;
+  size: string;
 }
 
-const GenreListItem: FC<Props> = ({ genre }) => {
+const GenreListItem: FC<Props> = ({ genre, size }) => {
   return (
-    <GenreListItemWrapper>
+    <GenreListItemWrapper size={size}>
       <div className="GenreImageWrapper">
         <Image
           quality={100}
-          width="194.61px"
-          height="194.61px"
+          width={`${size}px`}
+          height={`${size}px`}
           objectFit="cover"
           src={KPop}
           alt="GenreImage"
@@ -26,10 +27,10 @@ const GenreListItem: FC<Props> = ({ genre }) => {
   );
 };
 
-const GenreListItemWrapper = styled.div`
+const GenreListItemWrapper = styled.div<{ size: string }>`
   display: flex;
   flex-direction: column;
-  width: 240px;
+  width: ${(props) => (Number(props.size) <= 140 ? "200px" : "240px")};
   align-items: center;
   cursor: pointer;
   .GenreImageWrapper {
@@ -46,8 +47,8 @@ const GenreListItemWrapper = styled.div`
     }
     #round {
       position: absolute;
-      width: 240.44px;
-      height: 240.44px;
+      width: ${(props) => `${Number(props.size) + 30}px`};
+      height: ${(props) => `${Number(props.size) + 30}px`};
       background: #e1e1e1;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
       border-radius: 150px;
