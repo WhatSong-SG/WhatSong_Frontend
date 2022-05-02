@@ -1,10 +1,22 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 
 const Trophy: FC = () => {
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", () => {
+      setWindowWidth(window.innerWidth);
+    });
+
+    return () => removeEventListener("resize", () => {});
+  }, []);
+
   return (
     <svg
-      width="51"
-      height="51"
+      width={windowWidth <= 768 ? "38" : "51"}
+      height={windowWidth <= 768 ? "38" : "51"}
       viewBox="0 0 51 51"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
