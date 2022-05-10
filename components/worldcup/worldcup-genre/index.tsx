@@ -12,11 +12,9 @@ const WorldCupGenre: FC = () => {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
-
     return () => removeEventListener("resize", () => {});
   }, []);
 
@@ -52,7 +50,6 @@ const WorldCupGenre: FC = () => {
             genre={"KPOP"}
             size={windowWidth <= 768 ? "142" : "194.61"}
           />
-
         </S.GenreListContainer>
       </S.GenreArticle>
     </S.WorldCupMainContainer>
