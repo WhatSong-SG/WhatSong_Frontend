@@ -2,6 +2,7 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import KPop from "../../../public/icon/Kpop.png";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   genre: string;
@@ -10,24 +11,26 @@ interface Props {
 
 const GenreListItem: FC<Props> = ({ genre, size }) => {
   return (
-    <GenreListItemWrapper size={size}>
-      <div className="GenreImageWrapper">
-        <Image
-          quality={100}
-          width={`${size}px`}
-          height={`${size}px`}
-          objectFit="cover"
-          src={KPop}
-          alt="GenreImage"
-        />
-        <div id="round" />
-      </div>
-      <h2>{genre}</h2>
-    </GenreListItemWrapper>
+    <Link href={`/tournament/${genre}`} passHref>
+      <GenreListItemWrapper size={size}>
+        <div className="GenreImageWrapper">
+          <Image
+            quality={100}
+            width={`${size}px`}
+            height={`${size}px`}
+            objectFit="cover"
+            src={KPop}
+            alt="GenreImage"
+          />
+          <div id="round" />
+        </div>
+        <h2>{genre}</h2>
+      </GenreListItemWrapper>
+    </Link>
   );
 };
 
-const GenreListItemWrapper = styled.div<{ size: string }>`
+const GenreListItemWrapper = styled.a<{ size: string }>`
   display: flex;
   flex-direction: column;
   width: ${(props) => (Number(props.size) <= 140 ? "200px" : "240px")};
