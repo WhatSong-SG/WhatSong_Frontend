@@ -5,11 +5,9 @@ const Trophy: FC = () => {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
-
     return () => removeEventListener("resize", () => {});
   }, []);
 
