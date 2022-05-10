@@ -10,11 +10,9 @@ const Header: FC = (): JSX.Element => {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
-
     return () => removeEventListener("resize", () => {});
   }, []);
 
@@ -29,11 +27,11 @@ const Header: FC = (): JSX.Element => {
         </S.TabletHeaderContainer>
       ) : (
         <S.PCHeaderContainer>
-          <Link href="/home">
+          <Link href="/home" passHref>
             <S.PCHeaderTitle>WhatSong</S.PCHeaderTitle>
           </Link>
           <S.PCHeaderBox>
-            <Link href="/home">
+            <Link href="/home" passHref>
               <S.PCHeaderNavigation
                 decorationType={
                   router.pathname === "/home" ? "underline" : "none"
@@ -42,7 +40,7 @@ const Header: FC = (): JSX.Element => {
                 Home
               </S.PCHeaderNavigation>
             </Link>
-            <Link href="/genre">
+            <Link href="/genre" passHref>
               <S.PCHeaderNavigation
                 decorationType={
                   router.pathname === "/genre" ? "underline" : "none"
@@ -51,7 +49,7 @@ const Header: FC = (): JSX.Element => {
                 Genre
               </S.PCHeaderNavigation>
             </Link>
-            <Link href="/tournament">
+            <Link href="/tournament" passHref>
               <S.PCHeaderNavigation
                 decorationType={
                   router.pathname === "/tournament" ? "underline" : "none"
