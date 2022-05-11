@@ -2,13 +2,14 @@ import styled from "@emotion/styled";
 
 export const DisplayFlexBox = styled.div`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 
 export const HeaderTitleWrapper = styled.section`
   width: 100%;
-  height: 10.25rem;
+  height: 9rem;
   display: flex;
   align-items: center;
   align-self: flex-start;
@@ -22,6 +23,7 @@ export const HeaderTitleWrapper = styled.section`
   @media screen and (max-width: 1409px) {
     justify-content: center;
     align-self: center;
+    height: 9.25rem;
 
     & > h1 {
       margin: 27px;
@@ -31,12 +33,14 @@ export const HeaderTitleWrapper = styled.section`
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
     align-self: center;
+    height: 9.25rem;
     & > h1 {
       font-size: 1.875rem;
       font-weight: bold;
       margin: 0 7px 0 60px;
     }
   }
+
   @media screen and (max-width: 370px) {
     & > h1 {
       font-size: 1.5rem;
