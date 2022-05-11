@@ -41,7 +41,6 @@ export const PCHeaderBox = styled.div`
 
 export const TabletHeaderContainer = styled.div`
   height: 54px;
-  min-width: 100vw;
   background-color: ${theme.colors.black000};
   display: flex;
   justify-content: space-between;
