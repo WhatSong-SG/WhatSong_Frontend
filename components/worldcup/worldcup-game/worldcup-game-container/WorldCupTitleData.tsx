@@ -29,12 +29,12 @@ const WorldCupTitleWrapper = styled.div`
   }
 
   @media screen and (max-width: 1409px) {
-    width: 30rem;
+    width: 28rem;
     font-size: 1.8rem;
   }
 
   @media screen and (max-width: 765px) {
-    width: 25rem;
+    width: 23rem;
     font-size: 1.7rem;
   }
 `;
