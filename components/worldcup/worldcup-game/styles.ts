@@ -1,39 +1,46 @@
 import styled from "@emotion/styled";
 
 export const DisplayFlexBox = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
 export const HeaderTitleWrapper = styled.section`
   width: 100%;
-  height: 60px;
+  height: 10.25rem;
   display: flex;
   align-items: center;
   align-self: flex-start;
 
   & > h1 {
-    margin: 27px;
+    margin: 0 27px 0 120px;
     font-size: 2.5rem;
     font-weight: bold;
   }
+
   @media screen and (max-width: 1409px) {
     justify-content: center;
     align-self: center;
+
+    & > h1 {
+      margin: 27px;
+    }
   }
 
   @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+    align-self: center;
     & > h1 {
       font-size: 1.875rem;
       font-weight: bold;
-      margin: 0 7px 0 0;
+      margin: 0 7px 0 60px;
     }
   }
   @media screen and (max-width: 370px) {
     & > h1 {
       font-size: 1.5rem;
       font-weight: bold;
-      margin: 0 7px 0 0;
     }
   }
 `;
