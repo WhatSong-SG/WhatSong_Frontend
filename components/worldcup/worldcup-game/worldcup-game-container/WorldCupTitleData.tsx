@@ -1,12 +1,15 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 interface Props {}
 
 const WorldCupTitleData: FC<Props> = () => {
+  const router = useRouter();
+  console.log(router.query.gener);
   return (
     <WorldCupTitleWrapper>
-      <b>KPOP</b>
+      <b>{router.query.gener}</b>
       <span>32 round</span>
       <span>1/16</span>
     </WorldCupTitleWrapper>
@@ -15,10 +18,10 @@ const WorldCupTitleData: FC<Props> = () => {
 
 const WorldCupTitleWrapper = styled.div`
   display: flex;
-  width: 28rem;
-  height: 84px;
+  width: 36rem;
+  height: 125px;
   color: white;
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   font-weight: bold;
   justify-content: space-between;
   align-items: center;
