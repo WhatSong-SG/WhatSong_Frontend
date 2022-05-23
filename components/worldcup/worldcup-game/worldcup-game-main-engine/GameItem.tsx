@@ -3,11 +3,18 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import GameImage1 from "../../../../public/icon/GameImage1.png";
 
-interface Props {}
+interface Props {
+  direction: string;
+  setSelectDirection: (value: string) => void;
+}
 
-const GameItem: FC<Props> = () => {
+const GameItem: FC<Props> = ({ direction, setSelectDirection }) => {
   return (
-    <GameItemBox>
+    <GameItemBox
+      onClick={() => {
+        setSelectDirection(direction);
+      }}
+    >
       <Image
         src={GameImage1}
         quality={100}
@@ -28,6 +35,7 @@ const GameItemBox = styled.div`
   cursor: pointer;
   aspect-ratio: 1/1;
   position: relative;
+  transition: 0.2s;
 
   .text-center {
     display: flex;
