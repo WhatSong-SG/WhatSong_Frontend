@@ -2,14 +2,13 @@ import styled from "@emotion/styled";
 
 export const DisplayFlexBox = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 
 export const HeaderTitleWrapper = styled.section`
   width: 100%;
-  height: 9rem;
+  height: 7rem;
   display: flex;
   align-items: center;
   align-self: flex-start;
