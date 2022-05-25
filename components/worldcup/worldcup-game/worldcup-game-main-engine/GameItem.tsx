@@ -2,15 +2,19 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import GameImage1 from "../../../../public/icon/GameImage1.png";
+import { keyframes, css } from "@emotion/react";
 
 interface Props {
   direction: string;
   setSelectDirection: (value: string) => void;
+  win: boolean;
 }
 
-const GameItem: FC<Props> = ({ direction, setSelectDirection }) => {
+const GameItem: FC<Props> = ({ direction, setSelectDirection, win }) => {
   return (
     <GameItemBox
+      direction={direction}
+      win={win}
       onClick={() => {
         setSelectDirection(direction);
       }}
@@ -30,12 +34,43 @@ const GameItem: FC<Props> = ({ direction, setSelectDirection }) => {
   );
 };
 
-const GameItemBox = styled.div`
+const winnerLeftAnimation = keyframes`
+  0% {
+    transform: translate(-50%);
+  }
+  100% {
+    transform: translate(0%);
+  }
+`;
+const winnerLightAnimation = keyframes`
+  0% {
+    transform: translate(50%);
+  }
+  100% {
+    transform: translate(0%);
+  }
+`;
+
+const GameItemBox = styled.div<{ win: boolean; direction: string }>`
   width: clamp(360px, 50%, 750px);
   cursor: pointer;
   aspect-ratio: 1/1;
   position: relative;
   transition: 0.2s;
+
+  ${(props) =>
+    props.win &&
+    props.direction === "left" &&
+    css`
+      animation: ${winnerLeftAnimation} linear 0.386s;
+    `};
+
+  ${(props) =>
+    props.win &&
+    props.direction === "right" &&
+    css`
+      animation: ${winnerLightAnimation} linear 0.386s;
+    `};
 
   .text-center {
     display: flex;

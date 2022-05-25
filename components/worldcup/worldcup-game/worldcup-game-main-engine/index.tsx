@@ -25,13 +25,15 @@ const WorldCupGameMainEngine: FC<Props> = () => {
               <GameItemBox
                 direction="left"
                 setSelectDirection={setSelectDirection}
+                win={true}
               />
             );
           case "right":
             return (
               <GameItemBox
-                direction="left"
+                direction="right"
                 setSelectDirection={setSelectDirection}
+                win={true}
               />
             );
           case "":
@@ -40,11 +42,13 @@ const WorldCupGameMainEngine: FC<Props> = () => {
                 <GameItemBox
                   direction={"left"}
                   setSelectDirection={setSelectDirection}
+                  win={false}
                 />
                 <b>Vs</b>
                 <GameItemBox
                   direction={"right"}
                   setSelectDirection={setSelectDirection}
+                  win={false}
                 />
               </>
             );
