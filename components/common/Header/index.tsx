@@ -20,7 +20,7 @@ const Header: FC = (): JSX.Element => {
 
   return (
     <>
-      {windowWidth <= 768 ? (
+      {windowWidth <= 1023 ? (
         <S.TabletHeaderContainer>
           <S.TabletHeaderTitle>WhatSong</S.TabletHeaderTitle>
           <S.TabletMenu>
@@ -35,27 +35,21 @@ const Header: FC = (): JSX.Element => {
           <S.PCHeaderBox>
             <Link href="/home">
               <S.PCHeaderNavigation
-                decorationType={
-                  router.pathname === "/home" ? "underline" : "none"
-                }
+                decorationType={router.pathname === "/home" ? "underline" : "none"}
               >
                 Home
               </S.PCHeaderNavigation>
             </Link>
             <Link href="/genre">
               <S.PCHeaderNavigation
-                decorationType={
-                  router.pathname === "/genre" ? "underline" : "none"
-                }
+                decorationType={router.pathname === "/genre" ? "underline" : "none"}
               >
                 Genre
               </S.PCHeaderNavigation>
             </Link>
             <Link href="/tournament">
               <S.PCHeaderNavigation
-                decorationType={
-                  router.pathname === "/tournament" ? "underline" : "none"
-                }
+                decorationType={router.pathname === "/tournament" ? "underline" : "none"}
               >
                 Tournament
               </S.PCHeaderNavigation>
