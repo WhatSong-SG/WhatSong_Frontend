@@ -36,10 +36,12 @@ const GenreListItemWrapper = styled.a<{ size: string }>`
   width: ${(props) => (Number(props.size) <= 140 ? "200px" : "240px")};
   align-items: center;
   cursor: pointer;
+
   .GenreImageWrapper {
     width: 100%;
     height: 15.0275rem;
     position: relative;
+
     & > span {
       position: absolute;
       border-radius: 5px;
@@ -48,6 +50,7 @@ const GenreListItemWrapper = styled.a<{ size: string }>`
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
     #round {
       position: absolute;
       width: ${(props) => `${Number(props.size) + 30}px`};
