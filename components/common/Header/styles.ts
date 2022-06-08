@@ -3,13 +3,17 @@ import theme from "../../../styles/theme";
 
 export const PCHeaderContainer = styled.div`
   width: 120px;
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
   padding: 60px 0;
   display: flex;
   flex-direction: column;
   gap: 70px;
   background-color: ${theme.colors.black000};
+  box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  left: 0;
 `;
 
 export const PCHeaderTitle = styled.div`
@@ -46,6 +50,7 @@ export const TabletHeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 32px;
+  box-sizing: border-box;
 `;
 
 export const TabletHeaderTitle = styled.div`
