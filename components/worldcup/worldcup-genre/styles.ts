@@ -13,7 +13,7 @@ export const WorldCupMainContainer = styled.main`
 
 export const GenreArticle = styled.article`
   width: 76%;
-  margin-top: 110px;
+  margin-top: 105px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -85,7 +85,7 @@ export const GenreListContainer = styled.section`
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 725px) {
     margin-top: 43px;
     gap: 0;
     justify-content: space-around;
