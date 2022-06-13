@@ -2,12 +2,14 @@
 import { FC } from "react";
 import * as S from "./style";
 import GameImage1 from "../../../public/icon/GameImage1.png";
+import Lists from "../../Gerne/Lists";
 
 interface Props {
   gener: string | string[] | undefined;
 }
 
 const WorldCupFinal: FC<Props> = ({ gener }) => {
+  const List = [1, 2, 3, 4, 5, 6];
   console.log(gener);
   return (
     <S.Main>
@@ -20,6 +22,11 @@ const WorldCupFinal: FC<Props> = ({ gener }) => {
             <p>The Weekend</p>
           </div>
         </div>
+        <S.ListWrapper>
+          {List.map((el, index) => {
+            return <Lists key={index}>{el}</Lists>;
+          })}
+        </S.ListWrapper>
       </S.MiddleFlexBox>
     </S.Main>
   );
