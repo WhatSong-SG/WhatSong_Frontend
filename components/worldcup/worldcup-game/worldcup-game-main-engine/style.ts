@@ -20,7 +20,7 @@ export const MainContainer = styled.div`
     font-size: 8rem;
     position: absolute;
     color: #e4e4e4;
-    z-index: 100;
+    z-index: 10;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
