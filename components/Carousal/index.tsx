@@ -2,66 +2,14 @@ import * as S from "./styles";
 import { prevButton, nextButton, starIcon } from "../../public/assets";
 import { FC, useEffect, useRef, useState } from "react";
 import Card from "../Card";
-import testAlbumCover from "/public/assets/testAlbumCover.png";
-import starBoy from "/public/assets/starboy.png";
+import { get10Songs } from "../../utils/api/Home";
+import { Top10SongsType } from "../../interface/Home";
 
 const Carousal: FC = (): JSX.Element => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousalRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const testObject = [
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: testAlbumCover.src,
-    },
-    {
-      title: "Good Day Mate",
-      artist: "박효신",
-      image_src: starBoy.src,
-    },
-  ];
-  const [testData, setTestData] = useState(testObject);
+  const [carousalData, setCarousalData] = useState<Top10SongsType[]>([]);
 
   const next = () => {
     setCurrentIndex((prev) => {
@@ -78,6 +26,16 @@ const Carousal: FC = (): JSX.Element => {
   const selectCard = (id: number) => {
     setCurrentIndex(id);
   };
+
+  useEffect(() => {
+    try {
+      get10Songs().then((response) => {
+        setCarousalData(response);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
 
   useEffect(() => {
     if (carousalRef.current) {
@@ -101,13 +59,13 @@ const Carousal: FC = (): JSX.Element => {
           display={currentIndex === 0 ? "none" : "block"}
         />
         <S.Carousal ref={carousalRef}>
-          {testData.map((value, index) => {
+          {carousalData.map((value, index) => {
             return (
               <Card
-                img_src={value.image_src}
-                title={value.title}
-                artist={value.artist}
                 ref={cardRef}
+                img_src={value.cover}
+                title={value.track_name}
+                artist={value.artist}
                 isCurrent={index === currentIndex}
                 key={index}
                 onClick={() => selectCard(index)}
