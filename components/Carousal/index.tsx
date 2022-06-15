@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { prevButton, nextButton, starIcon } from "../../public/assets";
 import { FC, useEffect, useRef, useState } from "react";
-import Card from "./Card";
+import Card from "../Card";
 import testAlbumCover from "/public/assets/testAlbumCover.png";
 import starBoy from "/public/assets/starboy.png";
 
@@ -64,44 +64,26 @@ const Carousal: FC = (): JSX.Element => {
   const [testData, setTestData] = useState(testObject);
 
   const next = () => {
-    if (currentIndex % 10 === 7) {
-      setTestData((prev) => {
-        return [...prev, ...testObject];
-      });
-    }
-
     setCurrentIndex((prev) => {
       return prev + 1;
     });
   };
 
   const prev = () => {
-    if (currentIndex === 0) return;
-
     setCurrentIndex((prev) => {
       return prev - 1;
     });
   };
 
   const selectCard = (id: number) => {
-    if (currentIndex % 10 === 7) {
-      setTestData((prev) => {
-        return [...prev, ...testObject];
-      });
-    }
-
     setCurrentIndex(id);
   };
 
   useEffect(() => {
     if (carousalRef.current) {
-      carousalRef.current.style.transform = `translateX(-${currentIndex * 400 + 200}px)`;
+      carousalRef.current.style.transform = `translateX(-${currentIndex * 350 + 175}px)`;
     }
   }, [currentIndex]);
-
-  useEffect(() => {
-    console.log(testData);
-  }, [testData])
 
   return (
     <S.CarousalContainer>
@@ -112,7 +94,12 @@ const Carousal: FC = (): JSX.Element => {
         <img src={starIcon.src} />
       </S.CarousalInfoTitleBox>
       <S.CarousalBox>
-        <img id="prevButton" src={prevButton.src} onClick={prev} />
+        <S.MoveImg
+          id="prevButton"
+          src={prevButton.src}
+          onClick={prev}
+          display={currentIndex === 0 ? "none" : "block"}
+        />
         <S.Carousal ref={carousalRef}>
           {testData.map((value, index) => {
             return (
@@ -128,7 +115,12 @@ const Carousal: FC = (): JSX.Element => {
             );
           })}
         </S.Carousal>
-        <img id="nextButton" src={nextButton.src} onClick={next} />
+        <S.MoveImg
+          id="nextButton"
+          src={nextButton.src}
+          onClick={next}
+          display={currentIndex === 9 ? "none" : "block"}
+        />
       </S.CarousalBox>
     </S.CarousalContainer>
   );

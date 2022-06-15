@@ -4,6 +4,10 @@ export const CarousalContainer = styled.div`
   height: 100vh;
   width: calc(100vw - 120px);
   background-color: #000;
+
+  @media only screen and (max-width: 1023px) {
+    width: 100vw;
+  }
 `;
 
 export const CarousalInfoTitleBox = styled.div`
@@ -24,7 +28,7 @@ export const CarousalInfoTitleBox = styled.div`
 `;
 
 export const CarousalBox = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 84px;
   padding: 32px 0;
@@ -33,11 +37,6 @@ export const CarousalBox = styled.div`
   min-height: 500px;
   display: flex;
   align-items: center;
-
-  img {
-    z-index: 10;
-    cursor: pointer;
-  }
 
   #nextButton {
     right: 0;
@@ -50,10 +49,17 @@ export const CarousalBox = styled.div`
   }
 `;
 
+export const MoveImg = styled.img<{ display: string }>`
+  z-index: 10;
+  cursor: pointer;
+  display: ${(props) => props.display};
+`;
+
 export const Carousal = styled.div`
   position: absolute;
   display: flex;
   align-items: flex-end;
   left: 50%;
   transition: 1s;
+  height: 450px;
 `;
