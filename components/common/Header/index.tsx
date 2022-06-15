@@ -35,21 +35,23 @@ const Header: FC = (): JSX.Element => {
           <S.PCHeaderBox>
             <Link href="/home" passHref>
               <S.PCHeaderNavigation
-                decorationType={router.pathname === "/home" ? "underline" : "none"}
+                border={router.pathname === "/home" ? "2px solid white" : "none"}
               >
                 Home
               </S.PCHeaderNavigation>
             </Link>
             <Link href="/genre" passHref>
               <S.PCHeaderNavigation
-                decorationType={router.pathname === "/genre" ? "underline" : "none"}
+                border={router.pathname === "/genre" ? "2px solid white" : "none"}
               >
                 Genre
               </S.PCHeaderNavigation>
             </Link>
             <Link href="/tournament" passHref>
               <S.PCHeaderNavigation
-                decorationType={router.pathname === "/tournament" ? "underline" : "none"}
+                border={
+                  router.pathname.includes("/tournament") === true ? "2px solid white" : "none"
+                }
               >
                 Tournament
               </S.PCHeaderNavigation>
