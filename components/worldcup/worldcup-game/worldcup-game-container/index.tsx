@@ -12,7 +12,7 @@ const WorldCupGameContainer: FC<Props> = ({ isRoundModalOpen }) => {
     <S.Main>
       {isRoundModalOpen === false && (
         <>
-          <WorldCupTitleW rapper />
+          <WorldCupTitleWrapper />
           <WorldCupGameMainEngine />
         </>
       )}
