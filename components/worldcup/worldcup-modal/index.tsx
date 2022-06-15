@@ -5,6 +5,7 @@ import { Trophy2 } from "../../../public/icon";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
 import { TotalRound } from "../../../module/atom/worldcup/worldcup";
+import { createWorldCupGame } from "../../../utils/api/Worldcup";
 
 interface Props {
   genre: string;
@@ -40,6 +41,13 @@ const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
           onClick={() => {
             setIsRoundModalOpen(false);
             setTotalRound(round);
+            createWorldCupGame(round)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((e) => {
+                console.log(e);
+              });
           }}
         >
           Start
