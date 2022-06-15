@@ -2,24 +2,28 @@
 import { FC, useState } from "react";
 import styled from "@emotion/styled";
 import { Trophy2 } from "../../../public/icon";
+import Link from "next/link";
+import { useSetRecoilState } from "recoil";
+import { TotalRound } from "../../../module/atom/worldcup/worldcup";
 
 interface Props {
   genre: string;
+  setIsRoundModalOpen: (value: boolean) => void;
 }
 
-const WorldCupModal: FC<Props> = ({ genre }) => {
+const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
   const [round, setRound] = useState(64);
-  console.log(round);
+  const setTotalRound = useSetRecoilState(TotalRound);
   return (
     <Container>
       <Background />
       <ModalContainer>
         <div className="ModalHeader">
           <img src={Trophy2.src} alt="트로피 사진" />
-          <h1>{genre} 월드컵</h1>
+          <h1>{genre} World Cup</h1>
         </div>
         <div className="ModalBody">
-          <b>총 라운드를 선택하세요.</b>
+          <b>Select a Total of Round</b>
           <select
             onChange={(e) => {
               setRound(parseInt(e.target.value));
@@ -32,8 +36,17 @@ const WorldCupModal: FC<Props> = ({ genre }) => {
             <option value="4">4강</option>
           </select>
         </div>
-        <button>시작하기</button>
-        <button>장르 선택하기</button>
+        <button
+          onClick={() => {
+            setIsRoundModalOpen(false);
+            setTotalRound(round);
+          }}
+        >
+          Start
+        </button>
+        <Link href="/tournament" passHref>
+          <button>Select Genre</button>
+        </Link>
       </ModalContainer>
     </Container>
   );
@@ -82,8 +95,8 @@ const ModalContainer = styled.div`
   }
 
   button:nth-of-type(1) {
-    background-color: #18a689;
-    border-color: #18a689;
+    background-color: #000000;
+    border-color: #000000;
     color: #fff;
     font-size: 14px;
     padding: 6px 12px;
