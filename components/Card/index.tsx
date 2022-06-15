@@ -12,8 +12,13 @@ interface Props {
 
 const Card: FC<Props> = ({ img_src, title, artist, ref, isCurrent, onClick }): JSX.Element => {
   return (
-    <S.CardContainer ref={ref} opacity={isCurrent ? 1 : 0.5} onClick={onClick}>
-      <S.CardImage src={img_src} alt="card_image" width={isCurrent ? "90%" : "60%"} />
+    <S.CardContainer ref={ref} opacity={isCurrent ? 1 : 0.5}>
+      <S.CardImage
+        src={img_src}
+        alt="card_image"
+        width={isCurrent ? "90%" : "60%"}
+        onClick={onClick}
+      />
       <S.CardTitle>{title}</S.CardTitle>
       <S.CardArtist>{artist}</S.CardArtist>
     </S.CardContainer>

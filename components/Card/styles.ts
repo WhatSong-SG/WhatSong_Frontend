@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const CardContainer = styled.div<{ opacity: number }>`
-  width: 400px;
+  width: 350px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,6 @@ export const CardContainer = styled.div<{ opacity: number }>`
   align-items: center;
   opacity: ${(props) => props.opacity};
   transition: 1s;
-  cursor: pointer;
 `;
 
 export const CardImage = styled.img<{ width: string }>`
@@ -17,6 +16,7 @@ export const CardImage = styled.img<{ width: string }>`
   aspect-ratio: 1/1;
   border-radius: 10px;
   transition: 1s;
+  cursor: pointer;
 `;
 
 export const CardTitle = styled.div`
