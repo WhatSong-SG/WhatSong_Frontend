@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import theme from "../../../styles/theme";
 
 export const PCHeaderContainer = styled.div`
+  min-width: 120px;
   width: 120px;
   height: 100vh;
   box-sizing: border-box;
@@ -14,6 +15,7 @@ export const PCHeaderContainer = styled.div`
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 99;
 `;
 
 export const PCHeaderTitle = styled.div`
@@ -45,13 +47,15 @@ export const PCHeaderBox = styled.div`
 
 export const TabletHeaderContainer = styled.div`
   height: 54px;
-  /* min-width: 100vw; */
   background-color: ${theme.colors.black000};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 32px;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 `;
 
 export const TabletHeaderTitle = styled.div`

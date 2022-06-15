@@ -3,9 +3,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Hamburger from "../../../public/icon/Hamburger";
 import * as S from "./styles";
+import { WindowWidth } from "../../../state/atoms/Global";
+import { useRecoilState } from "recoil";
 
 const Header: FC = (): JSX.Element => {
-  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useRecoilState(WindowWidth);
   const router = useRouter();
 
   useEffect(() => {
