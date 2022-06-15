@@ -11,9 +11,12 @@ import {
   graySpotify,
   grayYoutube,
 } from "../../public/assets";
+import { useRecoilValue } from "recoil";
+import { WindowWidth } from "../../state/atoms/Global";
 
 const Home: FC = (): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const windowWidth = useRecoilValue(WindowWidth);
 
   const copyLink = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -79,9 +82,7 @@ const Home: FC = (): JSX.Element => {
               <S.CopyBox>
                 <input
                   id="copyInput"
-                  value={
-                    "https://stackoverflow.com/questions/45089866/specifying-onclick-event-type-with-typescript-and-react-konva"
-                  }
+                  value={"https://stackoverflow.com/questions/45089866"}
                   ref={inputRef}
                   disabled
                 />
@@ -99,7 +100,7 @@ const Home: FC = (): JSX.Element => {
           </S.SongDataBody>
         </S.SongDataContainer>
       </S.SongInfoContainer>
-      <S.BackgroundImage src={backgroundBlack.src} />
+      <S.BackgroundImage src={backgroundBlack.src} display={windowWidth < 1023 ? "none" : "flex"} />
     </S.HomeWrapper>
   );
 };

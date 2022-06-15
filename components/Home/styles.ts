@@ -8,21 +8,41 @@ export const HomeWrapper = styled.div`
   flex-direction: column;
   min-width: calc(100vw - 120px);
   min-height: 100vh;
+
+  @media only screen and (max-width: 1023px) {
+    min-height: calc(100vh - 54px);
+    padding-top: 30px;
+  }
 `;
 
 export const Subtitle = styled.div`
   font-size: 32px;
   font-weight: 400;
-  margin-left: 10%;
   z-index: 10;
+  padding-left: 10%;
+
+  @media only screen and (max-width: 1023px) {
+    margin: 0 auto;
+    font-size: 28px;
+    padding: 0;
+  }
 `;
 
 export const SongInfoContainer = styled.div`
   display: flex;
   gap: 85px;
   padding-top: 80px;
-  margin-left: 10%;
+  padding-left: 10%;
   z-index: 10;
+  width: 100%;
+
+  @media only screen and (max-width: 1023px) {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-top: 40px;
+    gap: 45px;
+  }
 `;
 
 export const SongCoverContainer = styled.div`
@@ -33,6 +53,11 @@ export const SongCover = styled.img`
   width: 400px;
   height: 400px;
   object-fit: fill;
+
+  @media only screen and (max-width: 1023px) {
+    width: 350px;
+    height: 350px;
+  }
 `;
 
 export const SongNumber = styled.div`
@@ -60,11 +85,19 @@ export const SongDataHeader = styled.div`
 export const SongTitle = styled.div`
   font-size: 28px;
   font-weight: 600;
+
+  @media only screen and (max-width: 1023px) {
+    font-size: 24px;
+  }
 `;
 
 export const SongArtist = styled.div`
   font-size: 24px;
   font-weight: 275;
+
+  @media only screen and (max-width: 1023px) {
+    font-size: 16px;
+  }
 `;
 
 export const NumberOneText = styled.div`
@@ -72,6 +105,10 @@ export const NumberOneText = styled.div`
   font-style: normal;
   font-size: 90px;
   font-weight: 700;
+
+  @media only screen and (max-width: 1023px) {
+    font-size: 72px;
+  }
 `;
 
 export const DivideLine = styled.div`
@@ -134,7 +171,7 @@ export const CopyContainer = styled.div`
 `;
 
 export const CopyBox = styled.div`
-  width: clamp(100px, 60%, 400px);
+  width: clamp(100px, 70%, 450px);
   position: relative;
   margin-top: 10px;
 
@@ -157,9 +194,14 @@ export const CopyBox = styled.div`
   }
 `;
 
-export const BackgroundImage = styled.img`
+export const BackgroundImage = styled.img<{ display: string }>`
   z-index: 1;
   position: absolute;
   bottom: 0;
   width: calc(100vw - 120px);
+  display: ${(props) => props.display};
+
+  @media only screen and (max-width: 1023px) {
+    width: 100vw;
+  }
 `;
