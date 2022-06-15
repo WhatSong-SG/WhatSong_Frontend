@@ -19,7 +19,8 @@ export const Main = styled.div`
 export const MiddleFlexBox = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  justify-content: space-around;
+  width: 95%;
 
   & > .finalImageWrapper {
     position: relative;
@@ -27,8 +28,8 @@ export const MiddleFlexBox = styled.div`
   }
 
   & > .finalImageWrapper > img {
-    width: 47.5rem;
-    height: 47.5rem;
+    width: 46rem;
+    height: 46rem;
   }
 
   & > .finalImageWrapper > .music-title-artist-center {
@@ -55,6 +56,26 @@ export const MiddleFlexBox = styled.div`
       font-family: "Poppins", sans-serif;
       font-size: 2.25rem;
       margin: 0;
+    }
+  }
+`;
+
+export const ListWrapper = styled.div`
+  width: 47.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+
+  & > div {
+    grid-template-columns: 5% 19% 29% 33% 10% 10% !important;
+    & > div > button {
+      background: transparent;
+    }
+    & > * {
+      color: white !important;
+    }
+    & > div > * {
+      color: white !important;
     }
   }
 `;
