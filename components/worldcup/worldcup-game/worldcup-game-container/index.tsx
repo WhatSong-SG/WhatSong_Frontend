@@ -3,13 +3,19 @@ import * as S from "./style";
 import WorldCupTitleWrapper from "./WorldCupTitleData";
 import WorldCupGameMainEngine from "../worldcup-game-main-engine/index";
 
-interface Props {}
+interface Props {
+  isRoundModalOpen: boolean;
+}
 
-const WorldCupGameContainer: FC<Props> = () => {
+const WorldCupGameContainer: FC<Props> = ({ isRoundModalOpen }) => {
   return (
     <S.Main>
-      <WorldCupTitleWrapper />
-      <WorldCupGameMainEngine />
+      {isRoundModalOpen === false && (
+        <>
+          <WorldCupTitleW rapper />
+          <WorldCupGameMainEngine />
+        </>
+      )}
     </S.Main>
   );
 };
