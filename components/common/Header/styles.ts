@@ -28,13 +28,16 @@ export const PCHeaderTitle = styled.div`
   cursor: pointer;
 `;
 
-export const PCHeaderNavigation = styled.div<{ decorationType: string }>`
+export const PCHeaderNavigation = styled.div<{ border: string }>`
   font-size: 24px;
   transform: rotate(180deg);
   writing-mode: vertical-lr;
   color: ${theme.colors.white000};
-  text-decoration: ${(props) => props.decorationType};
   cursor: pointer;
+  border-left: ${(props) => props.border};
+  width: 32px;
+  display: flex;
+  align-items: center;
 `;
 
 export const PCHeaderBox = styled.div`
