@@ -2,16 +2,21 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
-interface Props {}
+interface Props {
+  match: number;
+  matchCount: number;
+  currentRound: number;
+}
 
-const WorldCupTitleData: FC<Props> = () => {
+const WorldCupTitleData: FC<Props> = ({ match, matchCount, currentRound }) => {
   const router = useRouter();
-  console.log(router.query.gener);
   return (
     <WorldCupTitleWrapper>
       <b>{router.query.gener}</b>
-      <span>32 round</span>
-      <span>1/16</span>
+      <span>{currentRound} round</span>
+      <span>
+        {match}/{matchCount}
+      </span>
     </WorldCupTitleWrapper>
   );
 };
