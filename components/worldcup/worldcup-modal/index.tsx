@@ -4,7 +4,10 @@ import styled from "@emotion/styled";
 import { Trophy2 } from "../../../public/icon";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
-import { TotalRound } from "../../../module/atom/worldcup/worldcup";
+import {
+  TournamentId,
+  MatchCountMax,
+} from "../../../module/atom/worldcup/worldcup";
 import { createWorldCupGame } from "../../../utils/api/Worldcup";
 
 interface Props {
@@ -14,7 +17,10 @@ interface Props {
 
 const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
   const [round, setRound] = useState(64);
-  const setTotalRound = useSetRecoilState(TotalRound);
+
+  const setTournamentId = useSetRecoilState(TournamentId);
+  const setMatchCountMax = useSetRecoilState(MatchCountMax);
+
   return (
     <Container>
       <Background />
@@ -40,10 +46,10 @@ const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
         <button
           onClick={() => {
             setIsRoundModalOpen(false);
-            setTotalRound(round);
             createWorldCupGame(round)
               .then((res) => {
-                console.log(res);
+                setTournamentId(res.tournament_id);
+                setMatchCountMax(res.match_count);
               })
               .catch((e) => {
                 console.log(e);
