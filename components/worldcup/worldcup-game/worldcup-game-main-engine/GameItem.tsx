@@ -1,8 +1,11 @@
-import { FC } from "react";
+/* eslint-disable @next/next/no-img-element */
+import { FC, useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import GameImage1 from "../../../../public/icon/GameImage1.png";
 import { keyframes, css } from "@emotion/react";
+import { useRecoilValue } from "recoil";
+import { MatchInfoData } from "../../../../module/atom/worldcup/worldcup";
 
 interface Props {
   direction: string;
@@ -11,6 +14,24 @@ interface Props {
 }
 
 const GameItem: FC<Props> = ({ direction, setSelectDirection, win }) => {
+  const matchInfoData = useRecoilValue(MatchInfoData);
+  const [musicData, setMusicData] = useState({
+    name: "",
+    artist: "",
+    cover: "",
+  });
+
+  useEffect(() => {
+    console.log(matchInfoData);
+    if (matchInfoData !== undefined) {
+      if (direction === "left") {
+        setMusicData(matchInfoData.music1);
+      } else if (direction === "right") {
+        setMusicData(matchInfoData.music2);
+      }
+    }
+  }, [direction, matchInfoData]);
+
   return (
     <GameItemBox
       direction={direction}
@@ -19,16 +40,14 @@ const GameItem: FC<Props> = ({ direction, setSelectDirection, win }) => {
         setSelectDirection(direction);
       }}
     >
-      <Image
-        src={GameImage1}
-        quality={100}
-        objectFit="contain"
-        placeholder="blur"
-        alt="게임 사진"
+      <img
+        src={musicData?.cover}
+        style={{ width: "100%", height: "100%" }}
+        alt={"music"}
       />
       <div className="text-center">
-        <h1>Starboy</h1>
-        <p>The Weekend</p>
+        <h1>{musicData?.name}</h1>
+        <p>{musicData?.artist}</p>
       </div>
     </GameItemBox>
   );
