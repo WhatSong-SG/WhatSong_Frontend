@@ -11,3 +11,29 @@ export const createWorldCupGame = async (round: number) => {
   });
   return data.data;
 };
+
+export const matchInfoFind = async (
+  tournament_id: number,
+  match_count: number
+) => {
+  const data = await instance.get(
+    `/tournament/${tournament_id}/match/${match_count}`
+  );
+  return data.data;
+};
+
+export const selectWinnder = async (
+  tournament_id: number,
+  match_count: number,
+  winner: number
+) => {
+  const data = await instance.post(
+    `/tournament/${tournament_id}/match/${match_count}/winner/${winner}`
+  );
+  return data.data;
+};
+
+export const getfinalWinner = async (tournament_id: number) => {
+  const data = await instance.get(`/tournament/${tournament_id}/winner`);
+  return data.data;
+};
