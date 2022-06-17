@@ -46,6 +46,11 @@ const WorldCupGameMainEngine: FC<Props> = () => {
           router.push(`/tournament/${gener}/final`);
         } else {
           setSelectDirection("");
+          setMatchInfoData({
+            ...matchInfoData,
+            music1: { ...matchInfoData.music1, cover: "" },
+            music2: { ...matchInfoData.music2, cover: "" },
+          });
           setMatchCount(matchCount + 1);
         }
       }, 1250);
