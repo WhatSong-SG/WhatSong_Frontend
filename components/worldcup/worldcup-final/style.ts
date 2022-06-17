@@ -22,6 +22,11 @@ export const MiddleFlexBox = styled.div`
   justify-content: space-around;
   width: 95%;
 
+  @media screen and (max-width: 1700px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   & > .finalImageWrapper {
     position: relative;
     margin-left: 54px;
