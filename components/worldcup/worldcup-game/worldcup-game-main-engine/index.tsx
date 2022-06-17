@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useEffect, useState } from "react";
 import * as S from "./style";
 import GameItemBox from "./GameItem";
@@ -28,17 +27,13 @@ const WorldCupGameMainEngine: FC<Props> = () => {
   useEffect(() => {
     if (selectDirection === "left" || selectDirection === "right") {
       if (selectDirection === "left") {
-        selectWinnder(tournamentId, matchCount, 0)
-          .then(() => {})
-          .catch((err) => {
-            console.log(err);
-          });
+        selectWinnder(tournamentId, matchCount, 0).catch((err) => {
+          console.log(err);
+        });
       } else if (selectDirection === "right") {
-        selectWinnder(tournamentId, matchCount, 1)
-          .then(() => {})
-          .catch((err) => {
-            console.log(err);
-          });
+        selectWinnder(tournamentId, matchCount, 1).catch((err) => {
+          console.log(err);
+        });
       }
 
       setTimeout(() => {
@@ -55,7 +50,17 @@ const WorldCupGameMainEngine: FC<Props> = () => {
         }
       }, 1250);
     }
-  }, [selectDirection]);
+  }, [
+    gener,
+    matchCount,
+    matchCountMax,
+    matchInfoData,
+    router,
+    selectDirection,
+    setMatchCount,
+    setMatchInfoData,
+    tournamentId,
+  ]);
 
   return (
     <S.MainContainer>

@@ -22,7 +22,6 @@ const GameItem: FC<Props> = ({ direction, setSelectDirection, win }) => {
   });
 
   useEffect(() => {
-    console.log(matchInfoData);
     if (matchInfoData !== undefined) {
       if (direction === "left") {
         setMusicData(matchInfoData.music1);
