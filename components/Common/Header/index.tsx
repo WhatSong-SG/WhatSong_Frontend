@@ -5,9 +5,11 @@ import Hamburger from "../../../public/icon/Hamburger";
 import * as S from "./styles";
 import { WindowWidth } from "../../../state/atoms/Global";
 import { useRecoilState } from "recoil";
+import NavModal from "./NavModal";
 
 const Header: FC = (): JSX.Element => {
   const [windowWidth, setWindowWidth] = useRecoilState(WindowWidth);
+  const [navModalOpen, setNavModalOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -23,8 +25,14 @@ const Header: FC = (): JSX.Element => {
       {windowWidth <= 1023 ? (
         <S.TabletHeaderContainer>
           <S.TabletHeaderTitle>WhatSong</S.TabletHeaderTitle>
-          <S.TabletMenu>
-            <Hamburger />
+          <S.TabletMenu onMouseLeave={() => setNavModalOpen(false)}>
+            <div onMouseEnter={() => setNavModalOpen(true)} style={{ cursor: "pointer" }}>
+              <Hamburger />
+            </div>
+            <NavModal
+              display={navModalOpen ? "flex" : "none"}
+              closeNavModal={() => setNavModalOpen(false)}
+            />
           </S.TabletMenu>
         </S.TabletHeaderContainer>
       ) : (
