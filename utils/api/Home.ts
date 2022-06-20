@@ -5,3 +5,9 @@ export const get10Songs = async () => {
 
   return data.data.music;
 };
+
+export const getDailySong = async () => {
+  const data = await instance.get("/music/daily");
+
+  return data.data
+};
