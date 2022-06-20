@@ -8,7 +8,6 @@ import {
   MatchInfoData,
   TournamentId,
 } from "../../../../module/atom/worldcup/worldcup";
-import { matchInfoFind } from "../../../../utils/api/Worldcup";
 import { selectWinnder } from "../../../../utils/api/Worldcup";
 import { useRouter } from "next/router";
 
@@ -16,7 +15,7 @@ interface Props {}
 
 const WorldCupGameMainEngine: FC<Props> = () => {
   const [selectDirection, setSelectDirection] = useState<string>("");
-  const [tournamentId, setTournamentId] = useRecoilState(TournamentId);
+  const tournamentId = useRecoilValue(TournamentId);
   const [matchCount, setMatchCount] = useRecoilState(MatchCount);
   const [matchInfoData, setMatchInfoData] = useRecoilState(MatchInfoData);
   const matchCountMax = useRecoilValue(MatchCountMax);
@@ -48,7 +47,7 @@ const WorldCupGameMainEngine: FC<Props> = () => {
           });
           setMatchCount(matchCount + 1);
         }
-      }, 1250);
+      }, 1000);
     }
   }, [
     gener,
