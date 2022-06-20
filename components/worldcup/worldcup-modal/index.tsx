@@ -16,7 +16,7 @@ interface Props {
 }
 
 const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
-  const [round, setRound] = useState(64);
+  const [round, setRound] = useState(16);
 
   const setTournamentId = useSetRecoilState(TournamentId);
   const setMatchCountMax = useSetRecoilState(MatchCountMax);
@@ -36,9 +36,13 @@ const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
               setRound(parseInt(e.target.value));
             }}
           >
-            <option value="64" disabled>64강</option>
-            <option value="32" disabled>32강</option>
-            <option value="16" disabled>16강</option>
+            <option value="64" disabled>
+              64강
+            </option>
+            <option value="32" disabled>
+              32강
+            </option>
+            <option value="16">16강</option>
             <option value="8">8강</option>
             <option value="4">4강</option>
           </select>
