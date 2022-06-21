@@ -1,15 +1,15 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import KPop from "../../../public/icon/Kpop.png";
 import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
   genre: string;
   size: string;
+  cover: string;
 }
 
-const GenreListItem: FC<Props> = ({ genre, size }) => {
+const GenreListItem: FC<Props> = ({ genre, size, cover }) => {
   return (
     <Link href={`/tournament/${genre}`} passHref>
       <GenreListItemWrapper size={size}>
@@ -19,7 +19,7 @@ const GenreListItem: FC<Props> = ({ genre, size }) => {
             width={`${size}px`}
             height={`${size}px`}
             objectFit="cover"
-            src={KPop}
+            src={cover}
             alt="GenreImage"
           />
           <div id="round" />

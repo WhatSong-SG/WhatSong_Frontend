@@ -1,18 +1,39 @@
-import { FC, useState, useCallback } from "react";
+/* eslint-disable @next/next/no-img-element */
+import { FC, useState, useCallback, useEffect } from "react";
 import * as S from "./styles";
 import ShareIcon from "../../public/icon/ShareIcon";
-import LMusicImage from "../../public/icon/LMusicImage";
 import Modal from "./LinkModal";
-import Youtube from "../../public/icon/Youtube";
-import Spotify from "../../public/icon/Spotify";
-import Apple from "../../public/icon/Apple";
-import Twitter from "../../public/icon/Twitter";
-import FaceBook from "../../public/icon/FaceBook";
-import Instagram from "../../public/icon/Instagram";
-import Copy from "../../public/icon/Copy";
+import {
+  copyIcon,
+  AppleMusic,
+  Facebook,
+  Twitter,
+  Spotify,
+  Youtube,
+} from "../../public/assets";
+import { getMusicInfo } from "../../utils/api/Worldcup";
+import { MusicInfoType } from "../../interface/WorldCup";
 
-const PopSite: FC = (): JSX.Element => {
+interface Props {
+  musicId: number;
+}
+
+const PopSite: FC<Props> = ({ musicId }): JSX.Element => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
+  const [musicInfo, setMusicInfo] = useState<MusicInfoType>();
+
+  useEffect(() => {
+    if (isOpenModal === true) {
+      getMusicInfo(musicId)
+        .then((res) => {
+          console.log(res);
+          setMusicInfo(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isOpenModal, musicId]);
 
   const onClickToggleModal = useCallback(() => {
     setOpenModal(!isOpenModal);
@@ -24,55 +45,42 @@ const PopSite: FC = (): JSX.Element => {
         {isOpenModal && (
           <Modal onClickToggleModal={onClickToggleModal}>
             <S.LMuiscImage>
-              <LMusicImage />
+              <img src={musicInfo?.cover} alt="musicImage" />
             </S.LMuiscImage>
             <S.LinkDiv>
               <S.Listen>Listen On</S.Listen>
               <S.LinkSite>
                 <S.Tie>
-                  <S.YouCircle>
-                    <Youtube />
-                    <S.LinkName>Youtube</S.LinkName>
-                  </S.YouCircle>
+                  <Youtube
+                    color="#FF0000"
+                    link={musicInfo?.link.youtube_music ?? ""}
+                  />
                 </S.Tie>
                 <S.Tie>
-                  <S.Circle>
-                    <Spotify />
-                    <S.LinkNames>Spotify</S.LinkNames>
-                  </S.Circle>
+                  <Spotify
+                    color="#1ED760"
+                    link={musicInfo?.link.spotify ?? ""}
+                  />
                 </S.Tie>
                 <S.Tie>
-                  <S.Circle>
-                    <Apple />
-                    <S.LinkNames>Apple Music</S.LinkNames>
-                  </S.Circle>
+                  <AppleMusic
+                    color="#E75D6A"
+                    link={musicInfo?.link.apple_music ?? ""}
+                  />
                 </S.Tie>
               </S.LinkSite>
               <S.share>Share</S.share>
               <S.LinkSite>
                 <S.Tie>
-                  <S.YouCircle>
-                    <Twitter />
-                    <S.LinkName>Twitter</S.LinkName>
-                  </S.YouCircle>
+                  <Twitter color="#469CE9" />
                 </S.Tie>
                 <S.Tie>
-                  <S.Circle>
-                    <FaceBook />
-                    <S.LinkNames2>Facebook</S.LinkNames2>
-                  </S.Circle>
-                </S.Tie>
-                <S.Tie>
-                  <S.Circle>
-                    <Instagram />
-                    <S.LinkNames2>Instagram</S.LinkNames2>
-                  </S.Circle>
+                  <Facebook color="#3275E2" />
                 </S.Tie>
               </S.LinkSite>
               <S.PageLink>PageLink</S.PageLink>
               <S.LinkAddress>
                 <S.Address>https:</S.Address>
-                <Copy />
               </S.LinkAddress>
             </S.LinkDiv>
           </Modal>

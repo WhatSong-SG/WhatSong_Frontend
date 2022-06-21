@@ -224,8 +224,6 @@ export const MusicTitle = styled.div`
 `;
 
 export const Singer = styled.div`
-  width: 178px;
-  height: 20px;
   margin-top: 5px;
   font-family: "Poppins";
   font-style: normal;
@@ -236,8 +234,6 @@ export const Singer = styled.div`
 `;
 
 export const Date = styled.div`
-  width: 150px;
-  height: 20px;
   margin-top: 20px;
   font-family: "Poppins";
   font-style: normal;
@@ -248,7 +244,7 @@ export const Date = styled.div`
 `;
 
 export const Share = styled.div`
-  display ;flex;
+  display: flex;
   text-align: center;
   margin-top: 15px;
   cursor: pointer;
@@ -277,7 +273,7 @@ export const LikeCount = styled.div`
 `;
 
 export const Div = styled.div`
-  postion: relative
+  postion: relative;
   width: 100%;
   display: flex;
 `;
@@ -384,7 +380,7 @@ export const LinkSite = styled.div`
   height: 120px;
   margin-top: 14px;
   display: flex;
-  justify-content: space-between;
+  gap: 60px;
 `;
 
 export const Tie = styled.div`

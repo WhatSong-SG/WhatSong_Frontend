@@ -4,7 +4,11 @@ import styled from "@emotion/styled";
 import { Trophy2 } from "../../../public/icon";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
-import { TotalRound } from "../../../module/atom/worldcup/worldcup";
+import {
+  TournamentId,
+  MatchCountMax,
+} from "../../../module/atom/worldcup/worldcup";
+import { createWorldCupGame } from "../../../utils/api/Worldcup";
 
 interface Props {
   genre: string;
@@ -12,8 +16,10 @@ interface Props {
 }
 
 const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
-  const [round, setRound] = useState(64);
-  const setTotalRound = useSetRecoilState(TotalRound);
+  const [round, setRound] = useState(16);
+  const setTournamentId = useSetRecoilState(TournamentId);
+  const setMatchCountMax = useSetRecoilState(MatchCountMax);
+
   return (
     <Container>
       <Background />
@@ -29,8 +35,12 @@ const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
               setRound(parseInt(e.target.value));
             }}
           >
-            <option value="64">64강</option>
-            <option value="32">32강</option>
+            <option value="64" disabled>
+              64강
+            </option>
+            <option value="32" disabled>
+              32강
+            </option>
             <option value="16">16강</option>
             <option value="8">8강</option>
             <option value="4">4강</option>
@@ -39,7 +49,14 @@ const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
         <button
           onClick={() => {
             setIsRoundModalOpen(false);
-            setTotalRound(round);
+            createWorldCupGame(round)
+              .then((res) => {
+                setTournamentId(res.tournament_id);
+                setMatchCountMax(res.match_count);
+              })
+              .catch((e) => {
+                console.log(e);
+              });
           }}
         >
           Start

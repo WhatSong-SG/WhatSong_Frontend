@@ -1,26 +1,41 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import * as S from "./styles";
 import testAlbumCover from "/public/assets/testAlbumCover.png";
 import {
   copyIcon,
   backgroundBlack,
-  grayAppleMusic,
-  grayFacebook,
-  grayTwitter,
-  grayInstagram,
-  graySpotify,
-  grayYoutube,
+  AppleMusic,
+  Facebook,
+  Twitter,
+  Spotify,
+  Youtube,
 } from "../../public/assets";
 import { useRecoilValue } from "recoil";
 import { WindowWidth } from "../../state/atoms/Global";
+import { getDailySong } from "../../utils/api/Home";
+import { DailySongType } from "../../interface/Home";
+import { useRouter } from "next/router";
 
 const Home: FC = (): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
   const windowWidth = useRecoilValue(WindowWidth);
+  const [dailySong, setDailySong] = useState<DailySongType>();
+  const [currentLink, setCurrentLink] = useState("");
 
   const copyLink = (text: string) => {
     navigator.clipboard.writeText(text);
   };
+
+  useEffect(() => {
+    setCurrentLink(window.location.href);
+    try {
+      getDailySong().then((response) => {
+        setDailySong(response);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
 
   return (
     <S.HomeWrapper>
@@ -29,14 +44,14 @@ const Home: FC = (): JSX.Element => {
       </S.Subtitle>
       <S.SongInfoContainer>
         <S.SongCoverContainer>
-          <S.SongCover src={testAlbumCover.src} />
+          <S.SongCover src={dailySong?.cover} />
         </S.SongCoverContainer>
         <S.SongDataContainer>
           <S.SongDataHeader>
             <S.NumberOneText>1</S.NumberOneText>
             <div className="songData">
-              <S.SongTitle>Starboy</S.SongTitle>
-              <S.SongArtist>The Weeknd</S.SongArtist>
+              <S.SongTitle>{dailySong?.track_name}</S.SongTitle>
+              <S.SongArtist>{dailySong?.artist}</S.SongArtist>
             </div>
           </S.SongDataHeader>
           <S.DivideLine />
@@ -45,35 +60,28 @@ const Home: FC = (): JSX.Element => {
               <S.Navigation>
                 <div className="navigationText">Listen On</div>
                 <S.NavigationIcons>
-                  <div className="navigationIcon">
-                    <img src={grayYoutube.src} />
-                    <div className="navigationName">Youtube</div>
-                  </div>
-                  <div className="navigationIcon">
-                    <img src={graySpotify.src} />
-                    <div className="navigationName">Spotify</div>
-                  </div>
-                  <div className="navigationIcon">
-                    <img src={grayAppleMusic.src} />
-                    <div className="navigationName">Apple Music</div>
-                  </div>
+                  <Youtube
+                    color="#FF0000"
+                    link={
+                      dailySong?.link.youtube_music ??
+                      "https://music.youtube.com"
+                    }
+                  />
+                  <Spotify
+                    color="#1ED760"
+                    link={dailySong?.link.spotify ?? ""}
+                  />
+                  <AppleMusic
+                    color="#E75D6A"
+                    link={dailySong?.link.apple_music ?? ""}
+                  />
                 </S.NavigationIcons>
               </S.Navigation>
               <S.Navigation>
                 <div className="navigationText">Share</div>
                 <S.NavigationIcons>
-                  <div className="navigationIcon">
-                    <img src={grayTwitter.src} />
-                    <div className="navigationName">Twitter</div>
-                  </div>
-                  <div className="navigationIcon">
-                    <img src={grayFacebook.src} />
-                    <div className="navigationName">Facebook</div>
-                  </div>
-                  <div className="navigationIcon">
-                    <img src={grayInstagram.src} />
-                    <div className="navigationName">Instagram</div>
-                  </div>
+                  <Twitter color="#469CE9" />
+                  <Facebook color="#3275E2" />
                 </S.NavigationIcons>
               </S.Navigation>
             </div>
@@ -82,7 +90,7 @@ const Home: FC = (): JSX.Element => {
               <S.CopyBox>
                 <input
                   id="copyInput"
-                  value={"https://stackoverflow.com/questions/45089866"}
+                  value={currentLink}
                   ref={inputRef}
                   disabled
                 />
@@ -100,7 +108,10 @@ const Home: FC = (): JSX.Element => {
           </S.SongDataBody>
         </S.SongDataContainer>
       </S.SongInfoContainer>
-      <S.BackgroundImage src={backgroundBlack.src} display={windowWidth < 1023 ? "none" : "flex"} />
+      <S.BackgroundImage
+        src={backgroundBlack.src}
+        display={windowWidth < 1279 ? "none" : "flex"}
+      />
     </S.HomeWrapper>
   );
 };
