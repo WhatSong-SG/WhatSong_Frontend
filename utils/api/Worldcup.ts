@@ -47,3 +47,8 @@ export const musicUp = async (musicId: number) => {
   const data = await instance.patch(`/music/${musicId}/up`);
   return data.data;
 };
+
+export const getMusicInfo = async (musicId: number) => {
+  const data = await instance.get(`/music/${musicId}`);
+  return data.data;
+};
