@@ -2,14 +2,16 @@ import * as S from "./styles";
 import { prevButton, nextButton, starIcon } from "../../public/assets";
 import { FC, useEffect, useRef, useState } from "react";
 import Card from "../Card";
-import { get10Songs } from "../../utils/api/Home";
 import { Top10SongsType } from "../../interface/Home";
 
-const Carousal: FC = (): JSX.Element => {
+interface Props {
+  top10Songs: Top10SongsType;
+}
+
+const Carousal: FC<Props> = ({ top10Songs }): JSX.Element => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousalRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const [carousalData, setCarousalData] = useState<Top10SongsType[]>([]);
 
   const next = () => {
     setCurrentIndex((prev) => {
@@ -26,16 +28,6 @@ const Carousal: FC = (): JSX.Element => {
   const selectCard = (id: number) => {
     setCurrentIndex(id);
   };
-
-  useEffect(() => {
-    try {
-      get10Songs().then((response) => {
-        setCarousalData(response);
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
 
   useEffect(() => {
     if (carousalRef.current) {
@@ -59,7 +51,7 @@ const Carousal: FC = (): JSX.Element => {
           display={currentIndex === 0 ? "none" : "block"}
         />
         <S.Carousal ref={carousalRef}>
-          {carousalData.map((value, index) => {
+          {top10Songs.music.map((value, index) => {
             return (
               <Card
                 ref={cardRef}
