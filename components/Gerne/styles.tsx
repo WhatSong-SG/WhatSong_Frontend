@@ -375,7 +375,7 @@ export const LinkSite = styled.div`
   height: 120px;
   margin-top: 14px;
   display: flex;
-  justify-content: space-between;
+  gap: 60px;
 `;
 
 export const Tie = styled.div`

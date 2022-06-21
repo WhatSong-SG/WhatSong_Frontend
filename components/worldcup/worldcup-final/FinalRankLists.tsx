@@ -29,7 +29,7 @@ const FinalRankLists: FC<Props> = ({ data, rank }): JSX.Element => {
           <S.Singer>{data.artist}</S.Singer>
         </S.MusicInfo>
         <S.Date>{data.date.substr(0, 10)}</S.Date>
-        <PopSite />
+        <PopSite musicId={data.id} />
         <S.Like>
           <S.Cursor
             onClick={() => {

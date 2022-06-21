@@ -22,3 +22,17 @@ export interface FinalRankListType {
   track_name: string;
   up: number;
 }
+
+export interface MusicInfoType {
+  artist: string;
+  cover: string;
+  date: string;
+  id: number;
+  link: {
+    apple_music: string;
+    youtube_music: string;
+    spotify: string;
+  };
+  track_name: string;
+  up: number;
+}
