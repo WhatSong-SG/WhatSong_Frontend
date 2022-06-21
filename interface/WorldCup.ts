@@ -13,3 +13,12 @@ export interface FinalWinnerType {
   cover: string;
   artist: string;
 }
+
+export interface FinalRankListType {
+  artist: string;
+  cover: string;
+  date: string;
+  id: number;
+  track_name: string;
+  up: number;
+}
