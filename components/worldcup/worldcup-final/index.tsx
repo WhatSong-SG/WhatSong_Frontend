@@ -5,27 +5,38 @@ import GameImage1 from "../../../public/icon/GameImage1.png";
 import Lists from "../../Gerne/Lists";
 import { useRecoilValue } from "recoil";
 import { TournamentId } from "../../../module/atom/worldcup/worldcup";
-import { getfinalWinner } from "../../../utils/api/Worldcup";
-import { FinalWinnerType } from "../../../interface/WorldCup";
+import { getFinalWinner } from "../../../utils/api/Worldcup";
+import {
+  FinalRankListType,
+  FinalWinnerType,
+} from "../../../interface/WorldCup";
+import { getFinalRank } from "../../../utils/api/Worldcup";
+import FinalRankLists from "./FinalRankLists";
 
 interface Props {
   gener: string | string[] | undefined;
 }
 
 const WorldCupFinal: FC<Props> = ({ gener }) => {
-  const List = [1, 2, 3, 4, 5, 6];
   const tournamentId = useRecoilValue(TournamentId);
   const [finalInfo, setFinalInfo] = useState<FinalWinnerType>({
     name: "",
     cover: "",
     artist: "",
   });
+  const [rankLists, setRankLists] = useState<Array<FinalRankListType>>();
 
   useEffect(() => {
-    getfinalWinner(tournamentId)
+    getFinalWinner(tournamentId)
       .then((res) => setFinalInfo(res))
       .catch((err) => console.log(err));
   }, [tournamentId]);
+
+  useEffect(() => {
+    getFinalRank()
+      .then((res) => setRankLists(res.music))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <S.Main>
@@ -39,8 +50,14 @@ const WorldCupFinal: FC<Props> = ({ gener }) => {
           </div>
         </div>
         <S.ListWrapper>
-          {List.map((el, index) => {
-            return <Lists key={index}>{el}</Lists>;
+          {rankLists?.map((el, index) => {
+            return (
+              <FinalRankLists
+                key={index}
+                data={el}
+                rank={index + 1}
+              ></FinalRankLists>
+            );
           })}
         </S.ListWrapper>
       </S.MiddleFlexBox>
