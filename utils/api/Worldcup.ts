@@ -33,7 +33,12 @@ export const selectWinnder = async (
   return data.data;
 };
 
-export const getfinalWinner = async (tournament_id: number) => {
+export const getFinalWinner = async (tournament_id: number) => {
   const data = await instance.get(`/tournament/${tournament_id}/winner`);
+  return data.data;
+};
+
+export const getFinalRank = async () => {
+  const data = await instance.get(`/music/tournament/rank`);
   return data.data;
 };
