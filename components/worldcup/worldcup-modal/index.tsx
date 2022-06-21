@@ -17,7 +17,6 @@ interface Props {
 
 const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
   const [round, setRound] = useState(16);
-
   const setTournamentId = useSetRecoilState(TournamentId);
   const setMatchCountMax = useSetRecoilState(MatchCountMax);
 

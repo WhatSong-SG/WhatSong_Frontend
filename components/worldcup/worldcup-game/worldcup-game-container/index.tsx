@@ -7,7 +7,7 @@ import {
   MatchInfoData,
   TournamentId,
 } from "../../../../module/atom/worldcup/worldcup";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { matchInfoFind } from "../../../../utils/api/Worldcup";
 
 interface Props {
@@ -15,8 +15,8 @@ interface Props {
 }
 
 const WorldCupGameContainer: FC<Props> = ({ isRoundModalOpen }) => {
-  const [tournamentId, setTournamentId] = useRecoilState(TournamentId);
-  const [matchCount, setMatchCount] = useRecoilState(MatchCount);
+  const tournamentId = useRecoilValue(TournamentId);
+  const matchCount = useRecoilValue(MatchCount);
   const [matchInfoData, setMatchInfoData] = useRecoilState(MatchInfoData);
 
   useEffect(() => {
