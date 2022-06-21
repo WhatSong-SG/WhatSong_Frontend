@@ -74,8 +74,7 @@ export const ListWrapper = styled.div`
   overflow-x: hidden;
 
   & > div {
-    grid-template-columns: 5% 16% 28% 30% 10% 10% !important;
-
+    grid-template-columns: 5% 14% 34% 28% 10% 9% !important;
     & > div > button {
       background: transparent;
     }
