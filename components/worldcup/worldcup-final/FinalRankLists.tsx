@@ -5,6 +5,7 @@ import UpIcon from "../../../public/icon/UpIcon";
 import DownIcon from "../../../public/icon/DownIcon";
 import PopSite from "../../../components/Gerne/PopSite";
 import { FinalRankListType } from "../../../interface/WorldCup";
+import { musicUp } from "../../../utils/api/Worldcup";
 
 interface Props {
   data: FinalRankListType;
@@ -30,7 +31,13 @@ const FinalRankLists: FC<Props> = ({ data, rank }): JSX.Element => {
         <S.Date>{data.date.substr(0, 10)}</S.Date>
         <PopSite />
         <S.Like>
-          <S.Cursor>
+          <S.Cursor
+            onClick={() => {
+              musicUp(data.id)
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
+            }}
+          >
             <UpIcon />
           </S.Cursor>
           <S.LikeCount>{data.up}</S.LikeCount>
