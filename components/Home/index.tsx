@@ -11,13 +11,15 @@ import {
 } from "../../public/assets";
 import { useRecoilValue } from "recoil";
 import { WindowWidth } from "../../state/atoms/Global";
-import { getDailySong } from "../../utils/api/Home";
 import { DailySongType } from "../../interface/Home";
 
-const Home: FC = (): JSX.Element => {
+interface Props {
+  dailySong: DailySongType;
+}
+
+const Home: FC<Props> = ({ dailySong }): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
   const windowWidth = useRecoilValue(WindowWidth);
-  const [dailySong, setDailySong] = useState<DailySongType>();
   const [currentLink, setCurrentLink] = useState("");
 
   const copyLink = (text: string) => {
@@ -26,13 +28,6 @@ const Home: FC = (): JSX.Element => {
 
   useEffect(() => {
     setCurrentLink(window.location.href);
-    try {
-      getDailySong().then((response) => {
-        setDailySong(response);
-      });
-    } catch (e) {
-      console.log(e);
-    }
   }, []);
 
   return (
@@ -60,19 +55,10 @@ const Home: FC = (): JSX.Element => {
                 <S.NavigationIcons>
                   <Youtube
                     color="#FF0000"
-                    link={
-                      dailySong?.link.youtube_music ??
-                      "https://music.youtube.com"
-                    }
+                    link={dailySong?.link.youtube_music ?? "https://music.youtube.com"}
                   />
-                  <Spotify
-                    color="#1ED760"
-                    link={dailySong?.link.spotify ?? ""}
-                  />
-                  <AppleMusic
-                    color="#E75D6A"
-                    link={dailySong?.link.apple_music ?? ""}
-                  />
+                  <Spotify color="#1ED760" link={dailySong?.link.spotify ?? ""} />
+                  <AppleMusic color="#E75D6A" link={dailySong?.link.apple_music ?? ""} />
                 </S.NavigationIcons>
               </S.Navigation>
               <S.Navigation>
@@ -86,12 +72,7 @@ const Home: FC = (): JSX.Element => {
             <S.CopyContainer>
               <div>Page Link</div>
               <S.CopyBox>
-                <input
-                  id="copyInput"
-                  value={currentLink}
-                  ref={inputRef}
-                  disabled
-                />
+                <input id="copyInput" value={currentLink} ref={inputRef} disabled />
                 <img
                   src={copyIcon.src}
                   alt="copyIcon"
@@ -106,10 +87,7 @@ const Home: FC = (): JSX.Element => {
           </S.SongDataBody>
         </S.SongDataContainer>
       </S.SongInfoContainer>
-      <S.BackgroundImage
-        src={backgroundBlack.src}
-        display={windowWidth < 1279 ? "none" : "flex"}
-      />
+      <S.BackgroundImage src={backgroundBlack.src} display={windowWidth < 1279 ? "none" : "flex"} />
     </S.HomeWrapper>
   );
 };
