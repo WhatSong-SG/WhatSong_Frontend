@@ -1,21 +1,38 @@
-import { FC, useState, useCallback } from "react";
+import { FC, useState, useEffect } from "react";
 import * as S from "./styles";
-import MusicImage from "../../public/icon/MusicImage";
 import UpIcon from "../../public/icon/UpIcon";
 import DownIcon from "../../public/icon/DownIcon";
 import PopSite from "./PopSite";
 
-const Lists: FC = (): JSX.Element => {
+interface Props {
+  el: {
+    artist: string;
+    cover: string;
+    date: string;
+    id: number;
+    track_name: string;
+    up: number;
+  };
+  index: number;
+}
+
+const Lists: FC<Props> = ({ el, index }): JSX.Element => {
   return (
     <>
       <S.ListBody>
-        <S.ListNumber>1</S.ListNumber>
+        <S.ListNumber>{index}</S.ListNumber>
         <S.MusicImage>
-          <MusicImage />
+          <img
+            src={el.cover}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </S.MusicImage>
         <S.MusicInfo>
-          <S.MusicTitle>Starboy</S.MusicTitle>
-          <S.Singer>The Weekend</S.Singer>
+          <S.MusicTitle>{el.track_name}</S.MusicTitle>
+          <S.Singer>{el.artist}</S.Singer>
         </S.MusicInfo>
         <S.Date>3 days ago</S.Date>
         <PopSite />
@@ -23,7 +40,7 @@ const Lists: FC = (): JSX.Element => {
           <S.Cursor>
             <UpIcon />
           </S.Cursor>
-          <S.LikeCount>60</S.LikeCount>
+          <S.LikeCount>{el.up}</S.LikeCount>
           <S.Cursor>
             <DownIcon />
           </S.Cursor>

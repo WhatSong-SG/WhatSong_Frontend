@@ -1,13 +1,22 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import * as S from "./styles";
-import MusicImage from "../../public/icon/MusicImage";
-import ShareIcon from "../../public/icon/ShareIcon";
-import UpIcon from "../../public/icon/UpIcon";
-import DownIcon from "../../public/icon/DownIcon";
 import Lists from "./Lists";
+import { MusicListObject } from "../../interface/MusicList";
+import { MusicLists } from "../../utils/api/MusicLists";
 
 const MusicList: FC = (): JSX.Element => {
-  const List = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [Music, setMusic] = useState<MusicListObject[]>([]);
+
+  useEffect(() => {
+    try {
+      MusicLists().then((response) => {
+        console.log(response);
+        setMusic(response);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
 
   return (
     <>
@@ -20,9 +29,9 @@ const MusicList: FC = (): JSX.Element => {
           <S.ListName>Like</S.ListName>
         </S.ListHeader>
         <S.Divide />
-        {List.map((el, index) => (
-          <Lists key={index}>{el}</Lists>
-        ))}
+        {Music.map((el, index) => {
+          return <Lists key={index} index={index + 1} el={el}></Lists>;
+        })}
       </S.MusicList>
     </>
   );

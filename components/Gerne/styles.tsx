@@ -57,7 +57,7 @@ export const Title = styled.div`
 `;
 
 export const Kinds = styled.div`
-  width: 1000px;
+  width: 100%;
   height: 46px;
   margin-top: 30px;
   margin-left: 36px;
@@ -65,7 +65,7 @@ export const Kinds = styled.div`
   justify-content: space-evenly;
   @media screen and (max-width: 1400px) {
     width: 80%;
-    height: 20px;
+    height: 40px;
     margin-top: 0;
     margin-left: 50px;
   }
@@ -73,18 +73,21 @@ export const Kinds = styled.div`
 
 export const ArrowDiv = styled.div`
   padding-top: 10px;
+  cursor: pointer;
 `;
 
 export const Kpop = styled.div`
-  font-weight: 700;
+  color: #000000;
   font-size: 24px;
-  line-height: 36px;
+  font-weight: 700;
+  margin-top: 2px;
   cursor: pointer;
   @media screen and (max-width: 1400px) {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
+    margin-top: 10px;
   }
 `;
 
@@ -151,7 +154,7 @@ export const ListHeader = styled.div`
   display: inline-grid;
   grid-template-columns: 5% 35% 40% 10% 10%;
   @media screen and (max-width: 1400px) {
-    grid-template-columns: 5% 40% 35% 12% 10%;
+    grid-template-columns: 5% 42% 33% 12% 10%;
   }
 `;
 
@@ -177,7 +180,7 @@ export const ListBody = styled.div`
   display: inline-grid;
   grid-template-columns: 5% 8% 25% 40% 10% 10%;
   @media screen and (max-width: 1400px) {
-    grid-template-columns: 5% 15% 21% 39% 8% 8%;
+    grid-template-columns: 5% 15% 25% 35% 8% 8%;
   }
 `;
 
@@ -207,7 +210,7 @@ export const MusicInfo = styled.div`
 `;
 
 export const MusicTitle = styled.div`
-  width: 112px;
+  width: 300px;
   height: 30px;
   font-family: "Poppins";
   font-style: normal;
@@ -215,6 +218,9 @@ export const MusicTitle = styled.div`
   font-size: 24px;
   line-height: 36px;
   color: #1e1e1e;
+  @media screen and (max-width: 1400px) {
+    font-size: 18px;
+  }
 `;
 
 export const Singer = styled.div`
@@ -258,7 +264,6 @@ export const Cursor = styled.div`
 export const LikeCount = styled.div`
   width: 30px;
   height: 35px;
-  margin: 5px 0 5px -4px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 300;
@@ -306,7 +311,7 @@ export const PlusDialogBox = styled.dialog`
 `;
 export const Backdrop = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
