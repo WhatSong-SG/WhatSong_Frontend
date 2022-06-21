@@ -9,8 +9,7 @@ export const HomeWrapper = styled.div`
   min-width: calc(100vw - 120px);
   min-height: 100vh;
 
-  @media only screen and (max-width: 1023px) {
-    min-height: calc(100vh - 54px);
+  @media only screen and (max-width: 1279px) {
     padding-top: 30px;
   }
 `;
@@ -21,7 +20,7 @@ export const Subtitle = styled.div`
   z-index: 10;
   padding-left: 10%;
 
-  @media only screen and (max-width: 1023px) {
+  @media only screen and (max-width: 1279px) {
     margin: 0 auto;
     font-size: 28px;
     padding: 0;
@@ -36,7 +35,7 @@ export const SongInfoContainer = styled.div`
   z-index: 10;
   width: 100%;
 
-  @media only screen and (max-width: 1023px) {
+  @media only screen and (max-width: 1279px) {
     flex-direction: column;
     align-items: center;
     padding-left: 0;
@@ -54,7 +53,7 @@ export const SongCover = styled.img`
   height: 400px;
   object-fit: fill;
 
-  @media only screen and (max-width: 1023px) {
+  @media only screen and (max-width: 1279px) {
     width: 350px;
     height: 350px;
   }

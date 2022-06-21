@@ -67,8 +67,11 @@ export const TabletHeaderTitle = styled.div`
   font-style: normal;
   color: ${theme.colors.white000};
   cursor: pointer;
+  position: relative;
 `;
 
 export const TabletMenu = styled.div`
-  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
 `;
