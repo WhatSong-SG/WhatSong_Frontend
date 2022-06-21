@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import * as S from "./styles";
-import testAlbumCover from "/public/assets/testAlbumCover.png";
 import {
   copyIcon,
   backgroundBlack,
@@ -14,7 +13,6 @@ import { useRecoilValue } from "recoil";
 import { WindowWidth } from "../../state/atoms/Global";
 import { getDailySong } from "../../utils/api/Home";
 import { DailySongType } from "../../interface/Home";
-import { useRouter } from "next/router";
 
 const Home: FC = (): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -44,7 +42,7 @@ const Home: FC = (): JSX.Element => {
       </S.Subtitle>
       <S.SongInfoContainer>
         <S.SongCoverContainer>
-          <S.SongCover src={dailySong?.cover} />
+          <S.SongCover src={dailySong?.cover ?? ""} alt="album-cover" />
         </S.SongCoverContainer>
         <S.SongDataContainer>
           <S.SongDataHeader>

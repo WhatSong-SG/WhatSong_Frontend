@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 export const HomeWrapper = styled.div`
   position: relative;
@@ -7,6 +8,8 @@ export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-width: calc(100vw - 120px);
+  width: calc(100vw - 120px);
+  max-width: calc(100vw - 120px);
   min-height: 100vh;
 
   @media only screen and (max-width: 1279px) {
@@ -33,7 +36,6 @@ export const SongInfoContainer = styled.div`
   padding-top: 80px;
   padding-left: 10%;
   z-index: 10;
-  width: 100%;
 
   @media only screen and (max-width: 1279px) {
     flex-direction: column;
