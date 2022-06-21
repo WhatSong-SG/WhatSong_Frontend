@@ -62,10 +62,19 @@ const Home: FC = (): JSX.Element => {
                 <S.NavigationIcons>
                   <Youtube
                     color="#FF0000"
-                    link={dailySong?.link.youtube_music ?? "https://music.youtube.com"}
+                    link={
+                      dailySong?.link.youtube_music ??
+                      "https://music.youtube.com"
+                    }
                   />
-                  <Spotify color="#1ED760" link={dailySong?.link.spotify ?? ""} />
-                  <AppleMusic color="#E75D6A" link={dailySong?.link.apple_music ?? ""} />
+                  <Spotify
+                    color="#1ED760"
+                    link={dailySong?.link.spotify ?? ""}
+                  />
+                  <AppleMusic
+                    color="#E75D6A"
+                    link={dailySong?.link.apple_music ?? ""}
+                  />
                 </S.NavigationIcons>
               </S.Navigation>
               <S.Navigation>
@@ -79,7 +88,12 @@ const Home: FC = (): JSX.Element => {
             <S.CopyContainer>
               <div>Page Link</div>
               <S.CopyBox>
-                <input id="copyInput" value={currentLink} ref={inputRef} disabled />
+                <input
+                  id="copyInput"
+                  value={currentLink}
+                  ref={inputRef}
+                  disabled
+                />
                 <img
                   src={copyIcon.src}
                   alt="copyIcon"
@@ -94,7 +108,10 @@ const Home: FC = (): JSX.Element => {
           </S.SongDataBody>
         </S.SongDataContainer>
       </S.SongInfoContainer>
-      <S.BackgroundImage src={backgroundBlack.src} display={windowWidth < 1279 ? "none" : "flex"} />
+      <S.BackgroundImage
+        src={backgroundBlack.src}
+        display={windowWidth < 1279 ? "none" : "flex"}
+      />
     </S.HomeWrapper>
   );
 };
