@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import theme from "../../../styles/theme";
 
 export const PCHeaderContainer = styled.div`
-  min-width: 120px;
   width: 120px;
   height: 100vh;
   box-sizing: border-box;
