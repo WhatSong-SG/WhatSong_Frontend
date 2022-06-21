@@ -42,3 +42,8 @@ export const getFinalRank = async () => {
   const data = await instance.get(`/music/tournament/rank`);
   return data.data;
 };
+
+export const musicUp = async (musicId: number) => {
+  const data = await instance.patch(`/music/${musicId}/up`);
+  return data.data;
+};

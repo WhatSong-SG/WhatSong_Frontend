@@ -1,6 +1,5 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import KPop from "../../../public/icon/Kpop.png";
 import Image from "next/image";
 import Link from "next/link";
 
