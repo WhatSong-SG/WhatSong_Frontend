@@ -36,14 +36,14 @@ const WorldCupModal: FC<Props> = ({ genre, setIsRoundModalOpen }) => {
             }}
           >
             <option value="64" disabled>
-              64강
+              64 Round
             </option>
             <option value="32" disabled>
-              32강
+              32 Round
             </option>
-            <option value="16">16강</option>
-            <option value="8">8강</option>
-            <option value="4">4강</option>
+            <option value="16">16 Round</option>
+            <option value="8">8 Round</option>
+            <option value="4">4 Round</option>
           </select>
         </div>
         <button
