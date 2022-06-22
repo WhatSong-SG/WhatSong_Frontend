@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Twitter = ({ color }: { color: string }) => {
+const Twitter = ({ color, url }: { color: string; url: string }) => {
   const [mouseOver, setMouseOver] = useState(false);
 
   return (
@@ -9,7 +9,7 @@ const Twitter = ({ color }: { color: string }) => {
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
       target="_blank"
-      href="https://twitter.com/intent/tweet?text=TEXT&url=https://youtube.com"
+      href={`https://twitter.com/intent/tweet?text=TEXT&url=https://${url}`}
     >
       <svg
         width="60"

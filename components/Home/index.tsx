@@ -66,8 +66,8 @@ const Home: FC<Props> = ({ dailySong }): JSX.Element => {
               <S.Navigation>
                 <div className="navigationText">Share</div>
                 <S.NavigationIcons>
-                  <Twitter color="#469CE9" />
-                  <Facebook color="#3275E2" />
+                  <Twitter color="#469CE9" url={currentLink} />
+                  <Facebook color="#3275E2" url={currentLink} />
                 </S.NavigationIcons>
               </S.Navigation>
             </div>
