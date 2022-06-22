@@ -9,11 +9,11 @@ export const HomeWrapper = styled.div`
   flex-direction: column;
   min-width: calc(100vw - 120px);
   width: calc(100vw - 120px);
-  max-width: calc(100vw - 120px);
   min-height: 100vh;
 
   @media only screen and (max-width: 1279px) {
     padding-top: 30px;
+    width: 100%;
   }
 `;
 

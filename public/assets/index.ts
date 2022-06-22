@@ -9,3 +9,4 @@ export { default as backgroundBlack } from "./background-black.svg";
 export { default as starIcon } from "./star.svg";
 export { default as nextButton } from "./next.svg";
 export { default as prevButton } from "./prev.svg";
+export { default as checkIcon } from "./check.svg";
