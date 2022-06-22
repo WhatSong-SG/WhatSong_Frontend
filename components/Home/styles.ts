@@ -54,6 +54,7 @@ export const SongCover = styled.img`
   width: 400px;
   height: 400px;
   object-fit: fill;
+  border-radius: 3px;
 
   @media only screen and (max-width: 1279px) {
     width: 350px;

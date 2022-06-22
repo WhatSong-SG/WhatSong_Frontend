@@ -2,21 +2,25 @@ import { FC, useState, useEffect } from "react";
 import * as S from "./styles";
 import GenreListItem from "./GenreListItem";
 import dynamic from "next/dynamic";
-import { getGenreList } from "../../../utils/api/Worldcup";
 
 const TrophyWithNoSSR = dynamic(() => import("../../../public/icon/Trophy"), {
   ssr: false,
 });
 
-type GenreList = {
+export type GenreList = {
   cover: string;
   id: number;
   name: string;
 };
 
-const WorldCupGenre: FC = () => {
+export interface WorldCupGenreProps {
+  genreList: {
+    genres: GenreList[];
+  };
+}
+
+const WorldCupGenre: FC<WorldCupGenreProps> = ({ genreList }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
-  const [genreList, setGenreList] = useState<Array<GenreList>>([]);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -24,16 +28,6 @@ const WorldCupGenre: FC = () => {
       setWindowWidth(window.innerWidth);
     });
     return () => removeEventListener("resize", () => {});
-  }, []);
-
-  useEffect(() => {
-    try {
-      getGenreList().then((res) => {
-        setGenreList(res.genres);
-      });
-    } catch (e) {
-      console.log(e);
-    }
   }, []);
 
   return (
@@ -44,7 +38,7 @@ const WorldCupGenre: FC = () => {
           <TrophyWithNoSSR />
         </S.HeaderTitleWrapper>
         <S.GenreListContainer>
-          {genreList.map((ele, index) => {
+          {genreList.genres.map((ele) => {
             return (
               <GenreListItem
                 key={ele.id}
