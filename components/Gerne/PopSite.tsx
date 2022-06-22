@@ -45,7 +45,14 @@ const PopSite: FC<Props> = ({ musicId }): JSX.Element => {
         {isOpenModal && (
           <Modal onClickToggleModal={onClickToggleModal}>
             <S.LMuiscImage>
-              <img src={musicInfo?.cover} alt="musicImage" />
+              <img
+                src={musicInfo?.cover}
+                alt="musicImage"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
             </S.LMuiscImage>
             <S.LinkDiv>
               <S.Listen>Listen On</S.Listen>

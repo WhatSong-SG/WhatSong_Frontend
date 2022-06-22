@@ -3,20 +3,23 @@ import * as S from "./styles";
 import Lists from "./Lists";
 import { MusicListObject } from "../../interface/MusicList";
 import { MusicLists } from "../../utils/api/MusicLists";
+import { useRecoilValue } from "recoil";
+import { GenreListIndexAtom } from "../../state/atoms/GenreData";
 
 const MusicList: FC = (): JSX.Element => {
   const [Music, setMusic] = useState<MusicListObject[]>([]);
+  const GenreListIndex = useRecoilValue(GenreListIndexAtom);
 
   useEffect(() => {
     try {
-      MusicLists().then((response) => {
+      MusicLists(GenreListIndex).then((response) => {
         console.log(response);
         setMusic(response);
       });
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [GenreListIndex]);
 
   return (
     <>
