@@ -71,15 +71,15 @@ export const Kinds = styled.div`
   }
 `;
 
-export const ArrowDiv = styled.div`
+export const ArrowDiv = styled.div<{ display: string }>`
   padding-top: 10px;
   cursor: pointer;
 `;
 
-export const Kpop = styled.div`
+export const Kpop = styled.div<{ fontWeight: number }>`
   color: #000000;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: ${(props) => props.fontWeight};
   margin-top: 2px;
   cursor: pointer;
   @media screen and (max-width: 1400px) {
@@ -178,7 +178,7 @@ export const ListBody = styled.div`
   width: 100%;
   margin-top: 20px;
   display: inline-grid;
-  grid-template-columns: 5% 8% 25% 40% 10% 10%;
+  grid-template-columns: 5% 8% 25% 43% 4% 10%;
   @media screen and (max-width: 1400px) {
     grid-template-columns: 5% 15% 25% 35% 8% 8%;
   }
@@ -257,13 +257,15 @@ export const Like = styled.div`
   margin-left: 35px;
 `;
 
-export const Cursor = styled.div`
+export const Cursor = styled.button`
+  border: none;
   cursor: pointer;
 `;
 
 export const LikeCount = styled.div`
-  width: 30px;
+  width: 100px;
   height: 35px;
+  text-align: center;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 300;

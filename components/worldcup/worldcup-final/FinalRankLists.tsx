@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { FC } from "react";
+import { FC, useState } from "react";
 import * as S from "./style";
 import UpIcon from "../../../public/icon/UpIcon";
 import DownIcon from "../../../public/icon/DownIcon";
@@ -13,6 +13,7 @@ interface Props {
 }
 
 const FinalRankLists: FC<Props> = ({ data, rank }): JSX.Element => {
+  const [addNumber, setAddNumber] = useState(0);
   return (
     <>
       <S.ListBody>
@@ -33,6 +34,7 @@ const FinalRankLists: FC<Props> = ({ data, rank }): JSX.Element => {
         <S.Like>
           <S.Cursor
             onClick={() => {
+              setAddNumber(addNumber + 1);
               musicUp(data.id)
                 .then((res) => console.log(res))
                 .catch((err) => console.log(err));
@@ -40,7 +42,7 @@ const FinalRankLists: FC<Props> = ({ data, rank }): JSX.Element => {
           >
             <UpIcon />
           </S.Cursor>
-          <S.LikeCount>{data.up}</S.LikeCount>
+          <S.LikeCount>{data.up + addNumber}</S.LikeCount>
           <S.Cursor>
             <DownIcon />
           </S.Cursor>

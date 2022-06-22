@@ -6,10 +6,13 @@ import MusicList from "./MusicList";
 import PlusModal from "./PlusModal";
 import { getGenreList } from "../../utils/api/GenreList";
 import { GenreList } from "../../interface/GenreList";
+import { GenreListIndexAtom } from "../../state/atoms/GenreData";
+import { useRecoilState } from "recoil";
 
 const Genre: FC = (): JSX.Element => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
-  const [GenreListIndex, setGenreListIndex] = useState(0);
+  const [GenreListIndex, setGenreListIndex] =
+    useRecoilState(GenreListIndexAtom);
   const carousalRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [carousalData, setCarousalData] = useState<GenreList[]>([]);
@@ -20,20 +23,29 @@ const Genre: FC = (): JSX.Element => {
 
   const next = () => {
     setGenreListIndex((prev) => {
-      return prev + 1;
+      if (prev !== 7) {
+        return prev + 1;
+      }
+      return prev;
     });
   };
 
   const prev = () => {
     setGenreListIndex((prev) => {
-      return prev - 1;
+      if (prev !== 1) {
+        return prev - 1;
+      }
+      return prev;
     });
+  };
+
+  const genreOnClick = (id: number) => {
+    setGenreListIndex(id);
   };
 
   useEffect(() => {
     try {
       getGenreList().then((response) => {
-        console.log(response);
         setCarousalData(response);
       });
     } catch (e) {
@@ -41,19 +53,32 @@ const Genre: FC = (): JSX.Element => {
     }
   }, []);
 
+  useEffect(() => {}, [GenreListIndex]);
+
   return (
     <S.Wrapper>
       <S.GenreArticle>
         <S.Header>
           <S.Title>Genre</S.Title>
           <S.Kinds ref={carousalRef}>
-            <S.ArrowDiv>
+            <S.ArrowDiv onClick={prev}>
               <LeftArrow />
             </S.ArrowDiv>
             {carousalData.map((value, index) => {
-              return <S.Kpop key={index}>{value.name}</S.Kpop>;
+              return (
+                <S.Kpop
+                  key={index}
+                  onClick={() => genreOnClick(index + 1)}
+                  fontWeight={index + 1 === GenreListIndex ? 700 : 400}
+                >
+                  {value.name}
+                </S.Kpop>
+              );
             })}
-            <S.ArrowDiv>
+            <S.ArrowDiv
+              onClick={next}
+              display={GenreListIndex === 0 ? "block" : "block"}
+            >
               <RightArrow />
             </S.ArrowDiv>
           </S.Kinds>

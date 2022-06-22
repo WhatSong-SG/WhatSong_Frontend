@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AppleMusic = ({ color, link }: { color: string, link: string }) => {
+const AppleMusic = ({ color, link }: { color: string; link: string }) => {
   const [mouseOver, setMouseOver] = useState(false);
 
   return (
@@ -10,6 +10,7 @@ const AppleMusic = ({ color, link }: { color: string, link: string }) => {
       target={"_blank"}
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
+      rel="noreferrer"
     >
       <svg
         width="60"
@@ -27,7 +28,12 @@ const AppleMusic = ({ color, link }: { color: string, link: string }) => {
         </g>
         <defs>
           <clipPath id="clip0_799_1470">
-            <rect width="36" height="36" fill="white" transform="translate(12 12)" />
+            <rect
+              width="36"
+              height="36"
+              fill="white"
+              transform="translate(12 12)"
+            />
           </clipPath>
         </defs>
       </svg>
