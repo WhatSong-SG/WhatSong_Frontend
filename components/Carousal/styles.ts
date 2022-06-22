@@ -2,11 +2,10 @@ import styled from "@emotion/styled";
 
 export const CarousalContainer = styled.div`
   height: 100vh;
-  width: calc(100vw - 120px);
   background-color: #000;
 
   @media only screen and (max-width: 1023px) {
-    width: 100vw;
+    width: 100%;
   }
 `;
 

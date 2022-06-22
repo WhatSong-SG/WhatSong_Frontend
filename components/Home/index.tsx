@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import * as S from "./styles";
-import testAlbumCover from "/public/assets/testAlbumCover.png";
 import {
   copyIcon,
   backgroundBlack,
@@ -9,18 +8,21 @@ import {
   Twitter,
   Spotify,
   Youtube,
+  checkIcon,
 } from "../../public/assets";
 import { useRecoilValue } from "recoil";
 import { WindowWidth } from "../../state/atoms/Global";
-import { getDailySong } from "../../utils/api/Home";
 import { DailySongType } from "../../interface/Home";
-import { useRouter } from "next/router";
 
-const Home: FC = (): JSX.Element => {
+interface Props {
+  dailySong: DailySongType;
+}
+
+const Home: FC<Props> = ({ dailySong }): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
   const windowWidth = useRecoilValue(WindowWidth);
-  const [dailySong, setDailySong] = useState<DailySongType>();
   const [currentLink, setCurrentLink] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const copyLink = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -28,13 +30,6 @@ const Home: FC = (): JSX.Element => {
 
   useEffect(() => {
     setCurrentLink(window.location.href);
-    try {
-      getDailySong().then((response) => {
-        setDailySong(response);
-      });
-    } catch (e) {
-      console.log(e);
-    }
   }, []);
 
   return (
@@ -44,7 +39,7 @@ const Home: FC = (): JSX.Element => {
       </S.Subtitle>
       <S.SongInfoContainer>
         <S.SongCoverContainer>
-          <S.SongCover src={dailySong?.cover} />
+          <S.SongCover src={dailySong?.cover ?? ""} alt="album-cover" />
         </S.SongCoverContainer>
         <S.SongDataContainer>
           <S.SongDataHeader>
@@ -62,45 +57,32 @@ const Home: FC = (): JSX.Element => {
                 <S.NavigationIcons>
                   <Youtube
                     color="#FF0000"
-                    link={
-                      dailySong?.link.youtube_music ??
-                      "https://music.youtube.com"
-                    }
+                    link={dailySong?.link.youtube_music ?? "https://music.youtube.com"}
                   />
-                  <Spotify
-                    color="#1ED760"
-                    link={dailySong?.link.spotify ?? ""}
-                  />
-                  <AppleMusic
-                    color="#E75D6A"
-                    link={dailySong?.link.apple_music ?? ""}
-                  />
+                  <Spotify color="#1ED760" link={dailySong?.link.spotify ?? ""} />
+                  <AppleMusic color="#E75D6A" link={dailySong?.link.apple_music ?? ""} />
                 </S.NavigationIcons>
               </S.Navigation>
               <S.Navigation>
                 <div className="navigationText">Share</div>
                 <S.NavigationIcons>
-                  <Twitter color="#469CE9" />
-                  <Facebook color="#3275E2" />
+                  <Twitter color="#469CE9" url={currentLink} />
+                  <Facebook color="#3275E2" url={currentLink} />
                 </S.NavigationIcons>
               </S.Navigation>
             </div>
             <S.CopyContainer>
               <div>Page Link</div>
               <S.CopyBox>
-                <input
-                  id="copyInput"
-                  value={currentLink}
-                  ref={inputRef}
-                  disabled
-                />
+                <input id="copyInput" value={currentLink} ref={inputRef} disabled />
                 <img
-                  src={copyIcon.src}
+                  src={copied ? checkIcon.src : copyIcon.src}
                   alt="copyIcon"
                   onClick={() => {
                     if (inputRef.current) {
                       copyLink(inputRef.current.value);
                     }
+                    setCopied(true);
                   }}
                 />
               </S.CopyBox>
@@ -108,10 +90,7 @@ const Home: FC = (): JSX.Element => {
           </S.SongDataBody>
         </S.SongDataContainer>
       </S.SongInfoContainer>
-      <S.BackgroundImage
-        src={backgroundBlack.src}
-        display={windowWidth < 1279 ? "none" : "flex"}
-      />
+      <S.BackgroundImage src={backgroundBlack.src} display={windowWidth < 1279 ? "none" : "flex"} />
     </S.HomeWrapper>
   );
 };

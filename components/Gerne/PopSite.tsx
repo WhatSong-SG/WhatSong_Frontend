@@ -47,11 +47,8 @@ const PopSite: FC<Props> = ({ musicId }): JSX.Element => {
             <S.LMuiscImage>
               <img
                 src={musicInfo?.cover}
+                style={{ width: "100%", height: "100%" }}
                 alt="musicImage"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
               />
             </S.LMuiscImage>
             <S.LinkDiv>
