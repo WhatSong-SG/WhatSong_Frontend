@@ -1,16 +1,20 @@
-import type { NextPage } from "next";
 import WorldCupGenre from "../components/worldcup/worldcup-genre";
-import dynamic from "next/dynamic";
+import { getGenreList } from "../utils/api/Worldcup";
+import { FC } from "react";
+import { WorldCupGenreProps } from "../components/worldcup/worldcup-genre";
 
-const WorldCuptGenreWithNoSSR = dynamic(
-  () => import("../components/worldcup/worldcup-genre/index"),
-  {
-    ssr: false,
-  }
-);
+export const getStaticProps = async () => {
+  const genreList = await getGenreList();
 
-const tournament: NextPage = () => {
-  return <WorldCuptGenreWithNoSSR />;
+  return {
+    props: {
+      genreList,
+    },
+  };
+};
+
+const tournament: FC<WorldCupGenreProps> = ({ genreList }) => {
+  return <WorldCupGenre genreList={genreList} />;
 };
 
 export default tournament;
