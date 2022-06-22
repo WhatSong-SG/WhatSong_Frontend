@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-const Facebook = ({ color }: { color: string }) => {
+const Facebook = ({ color, url }: { color: string; url: string }) => {
   const [mouseOver, setMouseOver] = useState(false);
   const router = useRouter();
 
@@ -12,7 +12,7 @@ const Facebook = ({ color }: { color: string }) => {
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
       target="_blank"
-      href={`http://www.facebook.com/sharer/sharer.php?u=youtube.com`}
+      href={`http://www.facebook.com/sharer/sharer.php?u=${url}`}
     >
       <svg
         width="60"

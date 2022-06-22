@@ -8,6 +8,7 @@ import {
   Twitter,
   Spotify,
   Youtube,
+  checkIcon,
 } from "../../public/assets";
 import { useRecoilValue } from "recoil";
 import { WindowWidth } from "../../state/atoms/Global";
@@ -21,6 +22,7 @@ const Home: FC<Props> = ({ dailySong }): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
   const windowWidth = useRecoilValue(WindowWidth);
   const [currentLink, setCurrentLink] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const copyLink = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -64,8 +66,8 @@ const Home: FC<Props> = ({ dailySong }): JSX.Element => {
               <S.Navigation>
                 <div className="navigationText">Share</div>
                 <S.NavigationIcons>
-                  <Twitter color="#469CE9" />
-                  <Facebook color="#3275E2" />
+                  <Twitter color="#469CE9" url={currentLink} />
+                  <Facebook color="#3275E2" url={currentLink} />
                 </S.NavigationIcons>
               </S.Navigation>
             </div>
@@ -74,12 +76,13 @@ const Home: FC<Props> = ({ dailySong }): JSX.Element => {
               <S.CopyBox>
                 <input id="copyInput" value={currentLink} ref={inputRef} disabled />
                 <img
-                  src={copyIcon.src}
+                  src={copied ? checkIcon.src : copyIcon.src}
                   alt="copyIcon"
                   onClick={() => {
                     if (inputRef.current) {
                       copyLink(inputRef.current.value);
                     }
+                    setCopied(true);
                   }}
                 />
               </S.CopyBox>
