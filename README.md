@@ -1,4 +1,4 @@
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f4831e4-b854-4037-9806-b969b15cd005/Untitled.png)
+![Untitled]([https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f4831e4-b854-4037-9806-b969b15cd005/Untitled.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8f4831e4-b854-4037-9806-b969b15cd005/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220906%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220906T003508Z&X-Amz-Expires=86400&X-Amz-Signature=d348b1dcb5b156c4454177c94eed6c388db91bfc484bf0682415c0e743e4acd5&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject))
 
 메인 페이지 안에 있는 오늘의 음악 추천 페이지입니다.
 
