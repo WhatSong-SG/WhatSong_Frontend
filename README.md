@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f4831e4-b854-4037-9806-b969b15cd005/Untitled.png)
 
-## Getting Started
+메인 페이지 안에 있는 오늘의 음악 추천 페이지입니다.
 
-First, run the development server:
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e56eb710-8b07-4b21-9465-947acb2c34e7/Untitled.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+메인 페이지 안에 있는 가장 인기있는 10가지 음악을 볼 수 있는 페이지입니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de4b3b63-7058-45ac-88c8-35033a1834d2/Untitled.png)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+장르 별로 음악을 추천 받을 수 있는 장르 페이지입니다
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9b14ffc5-dd5b-402d-a80c-da7c187b7fe1/Untitled.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+move to 버튼을 누르면 유튜브 뮤직, 스포티파이, 애플뮤직으로 음악을 들으러 갈 수 있고 트위터나 페이스북으로 음악을 공유 할 수 있습니다.
 
-## Learn More
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7f64039a-8c76-4913-bcf1-1d786355dda4/Untitled.png)
 
-To learn more about Next.js, take a look at the following resources:
+토너먼트 페이지입니다. 장르별로 이상형 월드컵 게임을 할 수 있도록 선택할 수 있는 페이지입니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a0df1359-8164-4c74-b355-df6b22998c89/Untitled.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+여기서 이상형 월드컵의 강수를 정할 수 있습니다.
 
-## Deploy on Vercel
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ce928c45-a55c-4938-83eb-eb7516a06011/Untitled.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+노래 이상형 월드컵을 진행하는 모습입니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0c5671ed-de22-45e2-832d-4638b17224f3/Untitled.png)
+
+노래 이상형 월드컵 결과 페이지입니다. 옆에는 다른 사람이 선택했던 음악이 순위에 따라서 Rank 리스트를 볼 수 있습니다.
